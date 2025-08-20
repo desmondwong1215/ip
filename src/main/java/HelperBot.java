@@ -5,6 +5,9 @@ public class HelperBot {
     public static final String LINE = "____________________________________________________________";
     public static final String NAME = "HelperBot";
 
+    private final String[] texts = new String[100];
+    private int textIndex = 0;
+
     public void greet(String name) {
         System.out.println(HelperBot.LINE);
         System.out.printf("Hello! I'm %s.\n", name);
@@ -13,14 +16,25 @@ public class HelperBot {
     }
 
     public void echo(String message) {
+
+        this.texts[this.textIndex++] = message;
+
         System.out.println(HelperBot.LINE);
-        System.out.println(">> " + message);
+        System.out.println("added: " + message);
         System.out.println(HelperBot.LINE);
     }
 
     public void exit() {
         System.out.println(HelperBot.LINE);
         System.out.println("Bye. Hope to see you again soon!");
+        System.out.println(HelperBot.LINE);
+    }
+
+    public void printTexts() {
+        System.out.println(HelperBot.LINE);
+        for (int i = 0; i < this.textIndex; i++) {
+            System.out.println((i + 1) + ". " + this.texts[i]);
+        }
         System.out.println(HelperBot.LINE);
     }
 
@@ -39,6 +53,9 @@ public class HelperBot {
             if (message.equalsIgnoreCase("bye")) {
                 this.exit();
                 break;
+            } else if (message.equalsIgnoreCase("list")) {
+                printTexts();
+                continue;
             }
 
             // repeat the message entered by user
