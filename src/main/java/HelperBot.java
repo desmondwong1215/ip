@@ -17,13 +17,54 @@ public class HelperBot {
     }
 
     ///  add the task to tasks
-    public void add(String message) {
+    public void addTask(String message) {
+        String outcome = "";
 
-        this.tasks.add(new Task(message));
+        try {
+            Task task;
+            if (message.toLowerCase().startsWith("todo ")) {
+                // create to-do
+                task = new ToDo(message.substring(5));
 
-        System.out.println(HelperBot.LINE);
-        System.out.println("added: " + message);
-        System.out.println(HelperBot.LINE);
+            } else if (message.toLowerCase().startsWith("deadline ")) {
+                // create deadline
+                int byIndex = message.indexOf("/by ");
+                if (byIndex == -1) {
+                    throw new IllegalArgumentException();
+                }
+                task = new Deadline(message.substring(9, byIndex),
+                        message.substring(byIndex + 4));
+
+            } else if (message.toLowerCase().startsWith("event ")) {
+                // create event
+                int fromIndex = message.indexOf("/from ");
+                int toIndex = message.indexOf("/to ");
+                if (fromIndex == -1 || toIndex == -1) {
+                    throw new IllegalArgumentException();
+                }
+                task = new Event(message.substring(6, fromIndex),
+                        message.substring(fromIndex + 6, toIndex),
+                        message.substring(toIndex + 4));
+
+            } else {
+                task = new Task(message);
+            }
+
+            this.tasks.add(task);
+            outcome = "Got it. I've added this task:\n\t"
+                + task
+                + "\nYou now have "
+                + this.tasks.size()
+                + " tasks in the list.";
+        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+            // catch invalid input
+            outcome = "Invalid command: Wrong format for task.";
+        } finally {
+            // print the outcome
+            System.out.println(HelperBot.LINE);
+            System.out.println(outcome);
+            System.out.println(HelperBot.LINE);
+        }
     }
 
     ///  exit the whole program
@@ -113,7 +154,7 @@ public class HelperBot {
 
             } else {
                 // repeat the message entered by user
-                this.add(message);
+                this.addTask(message);
 
             }
         }
