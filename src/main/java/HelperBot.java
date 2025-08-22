@@ -8,6 +8,7 @@ public class HelperBot {
 
     private final ArrayList<Task> tasks = new ArrayList<>();
 
+    /// print message to user
     private void print(String message) {
         System.out.println(HelperBot.LINE);
         System.out.println(message);
@@ -138,7 +139,7 @@ public class HelperBot {
                     + " tasks in the list.";
 
         } catch (HelperBotArgumentException e) {
-            // /by is not entered correctly
+            // /from or /to is not entered correctly
             outcome = e.toString();
 
         } finally {
@@ -147,6 +148,7 @@ public class HelperBot {
         }
     }
 
+    /// extract event data, create an event
     private Event getEvent(String message) {
         int fromIndex = message.indexOf("/from ");
         int toIndex = message.indexOf("/to ");
@@ -161,6 +163,7 @@ public class HelperBot {
                 message.substring(toIndex + 4).trim());
     }
 
+    /// delete a task
     private void delete(String[] message) {
         String outcome = "";
         int index = 0;
@@ -192,6 +195,7 @@ public class HelperBot {
         }
     }
 
+    /// initialize the chat
     public void chat() {
         // greet the user
         this.greet();
@@ -233,7 +237,7 @@ public class HelperBot {
                          this.addDeadline(message);
                          break;
                      case EVENT:
-                         // add a command
+                         // add an event
                          this.addEvent(message);
                          break;
                      case DELETE:
