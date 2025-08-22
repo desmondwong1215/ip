@@ -8,12 +8,18 @@ public class HelperBot {
 
     private final ArrayList<Task> tasks = new ArrayList<>();
 
+    public void print(String message) {
+        System.out.println(HelperBot.LINE);
+        System.out.println(message);
+        System.out.println(HelperBot.LINE);
+    }
+
     ///  Greet our user
     public void greet(String name) {
-        System.out.println(HelperBot.LINE);
-        System.out.printf("Hello! I'm %s.\n", name);
-        System.out.println("What can I do for you?");
-        System.out.println(HelperBot.LINE);
+        this.print("Hello! I'm "
+            + name
+            + ".\nWhat can I do for you?"
+        );
     }
 
     ///  add the task to tasks
@@ -61,27 +67,28 @@ public class HelperBot {
             outcome = "Invalid command: Wrong format for task.";
         } finally {
             // print the outcome
-            System.out.println(HelperBot.LINE);
-            System.out.println(outcome);
-            System.out.println(HelperBot.LINE);
+            this.print(outcome);
         }
     }
 
     ///  exit the whole program
     public void exit() {
-        System.out.println(HelperBot.LINE);
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println(HelperBot.LINE);
+        this.print("Bye. Hope to see you again soon!");
     }
 
     /// print the task one by one
     public void printTasks() {
-        System.out.println(HelperBot.LINE);
-        System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i < this.tasks.size(); i++) {
-            System.out.println((i + 1) + ". " + this.tasks.get(i));
+
+        if (this.tasks.isEmpty()) {
+            this.print("You do not have any task.");
+            return;
         }
-        System.out.println(HelperBot.LINE);
+
+        String tasks = "Here are the tasks in your list:";
+        for (int i = 0; i < this.tasks.size(); i++) {
+            tasks = tasks.concat("\n" + (i + 1) + ". " + this.tasks.get(i));
+        }
+        this.print(tasks);
     }
 
     /// change the task status
@@ -120,9 +127,7 @@ public class HelperBot {
 
         } finally {
             // print the outcome
-            System.out.println(HelperBot.LINE);
-            System.out.println(outcome);
-            System.out.println(HelperBot.LINE);
+            this.print(outcome);
 
         }
     }
