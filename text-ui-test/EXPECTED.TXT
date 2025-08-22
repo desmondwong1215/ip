@@ -4,6 +4,10 @@ What can I do for you?
 ____________________________________________________________
 
 ____________________________________________________________
+You do not have any task.
+____________________________________________________________
+
+____________________________________________________________
 Got it. I've added this task:
 	[T][ ] borrow book
 You now have 1 tasks in the list.
@@ -16,56 +20,111 @@ ____________________________________________________________
 
 ____________________________________________________________
 Got it. I've added this task:
-	[D][ ] return book  (by: Sunday)
+	[D][ ] return book (by: Sunday)
 You now have 2 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
 Got it. I've added this task:
-	[E][ ] project meeting  (from: Mon 2pm , to: 4pm)
+	[E][ ] project meeting (from: Mon 2pm, to: 4pm)
 You now have 3 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
 Got it. I've added this task:
-	[D][ ] do homework  (by: no idea :-p)
+	[D][ ] do homework (by: no idea :-p)
+You now have 4 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Got it. I've added this task:
+	[E][ ] CS2103T IP (from: -, to: -)
+You now have 5 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Here are the tasks in your list:
+1. [T][ ] borrow book
+2. [D][ ] return book (by: Sunday)
+3. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
+4. [D][ ] do homework (by: no idea :-p)
+5. [E][ ] CS2103T IP (from: -, to: -)
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have removed task 5!
+	[E][ ] CS2103T IP (from: -, to: -)
 You now have 4 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] borrow book
-2. [D][ ] return book  (by: Sunday)
-3. [E][ ] project meeting  (from: Mon 2pm , to: 4pm)
-4. [D][ ] do homework  (by: no idea :-p)
+2. [D][ ] return book (by: Sunday)
+3. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
+4. [D][ ] do homework (by: no idea :-p)
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked this task as done!
+Nice! I have marked task 1 as done!
 	[T][X] borrow book
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked this task as done!
-	[D][X] return book  (by: Sunday)
+Nice! I have marked task 2 as done!
+	[D][X] return book (by: Sunday)
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked this task as done!
-	[D][X] return book  (by: Sunday)
+Invalid Argument: Task 12 is not found
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked this task as not done yet!
+Nice! I have removed task 2!
+	[D][X] return book (by: Sunday)
+You now have 3 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Here are the tasks in your list:
+1. [T][X] borrow book
+2. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
+3. [D][ ] do homework (by: no idea :-p)
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have marked task 1 as not done yet!
 	[T][ ] borrow book
 ____________________________________________________________
 
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] borrow book
-2. [D][X] return book  (by: Sunday)
-3. [E][ ] project meeting  (from: Mon 2pm , to: 4pm)
-4. [D][ ] do homework  (by: no idea :-p)
+2. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
+3. [D][ ] do homework (by: no idea :-p)
+____________________________________________________________
+
+____________________________________________________________
+Invalid Command: blah is not found.
+____________________________________________________________
+
+____________________________________________________________
+Invalid Argument: Please enter start date and end data after /from and /to respectively
+____________________________________________________________
+
+____________________________________________________________
+Invalid Argument: Please enter /from before entering /to
+____________________________________________________________
+
+____________________________________________________________
+Invalid Argument: Please enter the deadline after /by
+____________________________________________________________
+
+____________________________________________________________
+Here are the tasks in your list:
+1. [T][ ] borrow book
+2. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
+3. [D][ ] do homework (by: no idea :-p)
 ____________________________________________________________
 
 ____________________________________________________________
