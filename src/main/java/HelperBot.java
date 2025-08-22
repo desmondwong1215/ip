@@ -15,9 +15,9 @@ public class HelperBot {
     }
 
     ///  Greet our user
-    private void greet(String name) {
+    private void greet() {
         this.print("Hello! I'm "
-            + name
+            + HelperBot.NAME
             + ".\nWhat can I do for you?"
         );
     }
@@ -147,7 +147,7 @@ public class HelperBot {
         }
     }
 
-    private static Event getEvent(String message) {
+    private Event getEvent(String message) {
         int fromIndex = message.indexOf("/from ");
         int toIndex = message.indexOf("/to ");
         if (fromIndex == -1 || toIndex == -1) {
@@ -161,9 +161,40 @@ public class HelperBot {
                 message.substring(toIndex + 4).trim());
     }
 
+    private void delete(String[] message) {
+        String outcome = "";
+        int index = 0;
+
+        try {
+            index = Integer.parseInt(message[1]) - 1;
+            Task task = this.tasks.remove(index);
+            outcome = "Nice! I have removed task "
+                    + (index  + 1)
+                    + "!\n\t"
+                    + task
+                    + "\nYou now have "
+                    + this.tasks.size()
+                    + " tasks in the list.";
+        } catch (IndexOutOfBoundsException e) {
+            if (message.length == 1) {
+                // the message length < 2, index is not provided
+                outcome = "Invalid Argument: Please enter the index of the task after " + message[0] + ".";
+            } else {
+                // index >= tasks.size(), task is not found
+                outcome = "Invalid Argument: Task " + (index + 1) + " is not found";
+            }
+        } catch (NumberFormatException e) {
+            // the second input cannot be parsed as an integer
+            outcome = "Invalid Argument: " + message[1] + " cannot be parsed as an integer.";
+        } finally {
+            // print the outcome
+            this.print(outcome);
+        }
+    }
+
     public void chat() {
         // greet the user
-        this.greet(HelperBot.NAME);
+        this.greet();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -174,45 +205,48 @@ public class HelperBot {
                 System.out.println();
                 String message = scanner.nextLine();
                 String[] splitMessage = message.split(" ");
-                String command = splitMessage[0].toLowerCase();
+                Command command = Command.getCommand(splitMessage[0]);
 
                  switch (command) {
-                     case "bye":
+                     case BYE:
                          // user want to exit
                          this.exit();
                          break label;
-                     case "list":
+                     case LIST:
                          // print all the tasks
                          this.printTasks();
                          break;
-                     case "mark":
+                     case MARK:
                          // mark the task as done
                          this.changeTaskStatus(splitMessage, true);
                          break;
-                     case "unmark":
+                     case UNMARK:
                          // mark the task as not done
                          this.changeTaskStatus(splitMessage, false);
                          break;
-                     case "todo":
+                     case TODO:
                          // add a to-do
                          this.addToDo(message);
                          break;
-                     case "deadline":
+                     case DEADLINE:
                          // add a deadline
                          this.addDeadline(message);
                          break;
-                     case "event":
+                     case EVENT:
                          // add a command
                          this.addEvent(message);
                          break;
+                     case DELETE:
+                         // delete the task
+                         this.delete(splitMessage);
+                         break;
                      default:
                          // invalid command
-                         throw new HelperBotCommandException(command + " is not found.");
+                         throw new HelperBotCommandException(splitMessage[0] + " is not found.");
                  }
             } catch (HelperBotCommandException e) {
                  // catch an invalid command
                  this.print(e.toString());
-
             }
         }
     }
