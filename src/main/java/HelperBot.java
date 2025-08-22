@@ -30,7 +30,6 @@ public class HelperBot {
 
     /// print the task one by one
     private void printTasks() {
-
         if (this.tasks.isEmpty()) {
             this.print("You do not have any task.");
             return;
@@ -49,37 +48,30 @@ public class HelperBot {
         int index = 0;
 
         try {
-
             index = Integer.parseInt(message[1]) - 1;
             if (mark) {
                 // mark the task as done
                 this.tasks.get(index).markAsDone();
                 outcome = "Nice! I have marked task " + (index + 1) + " as done!\n\t" + this.tasks.get(index);
-
             } else {
                 // mark the task as not done
                 this.tasks.get(index).markAsNotDone();
                 outcome = "Nice! I have marked task " + (index  + 1) + " as not done yet!\n\t" + this.tasks.get(index);
-
             }
         } catch (IndexOutOfBoundsException e) {
             if (message.length == 1) {
                 // the message length < 2, index is not provided
                 outcome = "Invalid Argument: Please enter the index of the task after " + message[0] + ".";
-
             } else {
                 // index >= tasks.size(), task is not found
                 outcome = "Invalid Argument: Task " + (index + 1) + " is not found";
-
             }
         } catch (NumberFormatException e) {
             // the second input cannot be parsed as an integer
             outcome = "Invalid Argument: " + message[1] + " cannot be parsed as an integer.";
-
         } finally {
             // print the outcome
             this.print(outcome);
-
         }
     }
 
@@ -97,9 +89,7 @@ public class HelperBot {
 
     /// add a deadline
     private void addDeadline(String message) {
-
         String outcome = "";
-
         try {
             int byIndex = message.indexOf("/by ");
             if (byIndex == -1) {
@@ -113,11 +103,9 @@ public class HelperBot {
                     + "\nYou now have "
                     + this.tasks.size()
                     + " tasks in the list.";
-
         } catch (HelperBotArgumentException e) {
             // /by is not entered correctly
             outcome = e.toString();
-
         } finally {
             // print the outcome
             this.print(outcome);
@@ -126,9 +114,7 @@ public class HelperBot {
 
     ///  add an event
     private void addEvent(String message) {
-
         String outcome = "";
-
         try {
             Event task = getEvent(message);
             this.tasks.add(task);
@@ -137,11 +123,9 @@ public class HelperBot {
                     + "\nYou now have "
                     + this.tasks.size()
                     + " tasks in the list.";
-
         } catch (HelperBotArgumentException e) {
             // /from or /to is not entered correctly
             outcome = e.toString();
-
         } finally {
             // print the outcome
             this.print(outcome);
@@ -167,7 +151,6 @@ public class HelperBot {
     private void delete(String[] message) {
         String outcome = "";
         int index = 0;
-
         try {
             index = Integer.parseInt(message[1]) - 1;
             Task task = this.tasks.remove(index);
