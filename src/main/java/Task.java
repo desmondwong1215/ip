@@ -7,6 +7,18 @@ public class Task {
         this.isDone = false;
     }
 
+    public static Task of(String message) throws HelperBotFileException {
+        String[] splitMessage = message.split(",");
+        return switch (splitMessage[0].trim().toUpperCase()) {
+            case "T" -> ToDo.of(splitMessage);
+            case "D" -> Deadline.of(splitMessage);
+            case "E" -> Event.of(splitMessage);
+            default -> throw new HelperBotFileException(
+                    splitMessage[0].trim().toUpperCase() + " is not Task."
+            );
+        };
+    }
+
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }
@@ -17,6 +29,10 @@ public class Task {
 
     public void markAsNotDone() {
         this.isDone = false;
+    }
+
+    public String toStrInFile() {
+        return String.join(",", new String[]{isDone ? "1" : "0", this.description});
     }
 
     @Override

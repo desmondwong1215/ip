@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -5,6 +9,7 @@ public class HelperBot {
 
     private static final String LINE = "____________________________________________________________";
     private static final String NAME = "HelperBot";
+    private static final String SRC = "data/HelperBot.txt";
 
     private final ArrayList<Task> tasks = new ArrayList<>();
 
@@ -25,6 +30,7 @@ public class HelperBot {
 
     ///  exit the whole program
     private void exit() {
+        writeToFile();
         this.print("Bye. Hope to see you again soon!");
     }
 
@@ -75,28 +81,16 @@ public class HelperBot {
         }
     }
 
-    ///  add a to-do
-    private void addToDo(String message) {
-        ToDo task = new ToDo(message.substring(5).trim());
-        this.tasks.add(task);
-        String outcome = "Got it. I've added this task:\n\t"
-                + task
-                + "\nYou now have "
-                + this.tasks.size()
-                + " tasks in the list.";
-        this.print(outcome);
-    }
-
-    /// add a deadline
-    private void addDeadline(String message) {
+    /// add a task
+    private void addTask(String message, Command command) {
         String outcome = "";
         try {
-            int byIndex = message.indexOf("/by ");
-            if (byIndex == -1) {
-                throw new HelperBotArgumentException("Please enter the deadline after /by");
-            }
-            Deadline task = new Deadline(message.substring(9, byIndex).trim(),
-                    message.substring(byIndex + 4).trim());
+            Task task = switch (command) {
+                case TODO -> ToDo.fromInput(message);
+                case DEADLINE -> Deadline.fromInput(message);
+                // command is Event
+                default -> Event.fromInput(message);
+            };
             this.tasks.add(task);
             outcome = "Got it. I've added this task:\n\t"
                     + task
@@ -110,41 +104,6 @@ public class HelperBot {
             // print the outcome
             this.print(outcome);
         }
-    }
-
-    ///  add an event
-    private void addEvent(String message) {
-        String outcome = "";
-        try {
-            Event task = getEvent(message);
-            this.tasks.add(task);
-            outcome = "Got it. I've added this task:\n\t"
-                    + task
-                    + "\nYou now have "
-                    + this.tasks.size()
-                    + " tasks in the list.";
-        } catch (HelperBotArgumentException e) {
-            // /from or /to is not entered correctly
-            outcome = e.toString();
-        } finally {
-            // print the outcome
-            this.print(outcome);
-        }
-    }
-
-    /// extract event data, create an event
-    private Event getEvent(String message) {
-        int fromIndex = message.indexOf("/from ");
-        int toIndex = message.indexOf("/to ");
-        if (fromIndex == -1 || toIndex == -1) {
-            throw new HelperBotArgumentException("Please enter start date and end data after " +
-                    "/from and /to respectively");
-        } else if (fromIndex > toIndex) {
-            throw new HelperBotArgumentException("Please enter /from before entering /to");
-        }
-        return new Event(message.substring(6, fromIndex).trim(),
-                message.substring(fromIndex + 6, toIndex).trim(),
-                message.substring(toIndex + 4).trim());
     }
 
     /// delete a task
@@ -178,8 +137,49 @@ public class HelperBot {
         }
     }
 
+    /// load data
+    private boolean loadData() {
+        boolean isSuccess = true;
+        try {
+            File file = new File(HelperBot.SRC);
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                this.tasks.add(Task.of(scanner.nextLine()));
+            }
+        } catch (FileNotFoundException e) {
+            isSuccess = false;
+            this.print(HelperBot.SRC + " is not found.");
+            exit();
+        } catch (HelperBotFileException e) {
+            isSuccess = false;
+            this.print(e.toString());
+            exit();
+        }
+
+        return isSuccess;
+    }
+
+    ///  write the data back to the file
+    private void writeToFile() {
+        try {
+            FileWriter fw = new FileWriter(HelperBot.SRC);
+            for (Task task: this.tasks) {
+                fw.write(task.toStrInFile() + "\n");
+            }
+            fw.close();
+        } catch (IOException e) {
+            this.print("Error: Unable to write task to the file");
+        }
+    }
+
     /// initialize the chat
     public void chat() {
+
+        if (!loadData()) {
+            // the loading of data is unsuccessful
+            return;
+        }
+
         // greet the user
         this.greet();
 
@@ -212,16 +212,10 @@ public class HelperBot {
                          this.changeTaskStatus(splitMessage, false);
                          break;
                      case TODO:
-                         // add a to-do
-                         this.addToDo(message);
-                         break;
                      case DEADLINE:
-                         // add a deadline
-                         this.addDeadline(message);
-                         break;
                      case EVENT:
-                         // add an event
-                         this.addEvent(message);
+                         // add a deadline
+                         this.addTask(message, command);
                          break;
                      case DELETE:
                          // delete the task
