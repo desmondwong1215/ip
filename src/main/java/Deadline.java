@@ -1,10 +1,17 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Deadline extends Task {
 
-    private final String by;
+    private final LocalDate byDate;
+    private final LocalTime byTime;
 
-    public Deadline(String description, String by) {
+    public Deadline(String description, LocalDate byDate, LocalTime byTime) {
         super(description);
-        this.by = by;
+        this.byDate = byDate;
+        this.byTime = byTime;
     }
 
     public static Deadline fromInput(String message) throws HelperBotArgumentException {
@@ -13,35 +20,59 @@ public class Deadline extends Task {
             throw new HelperBotArgumentException("Please enter the deadline after /by");
         }
         try {
-            return new Deadline(message.substring(9, byIndex).trim(),
-                    message.substring(byIndex + 4).trim());
+            String dateTime = message.substring(byIndex + 4).trim();
+            LocalDate byDate = LocalDate.parse(dateTime.substring(0, 10));
+            LocalTime byTime = null;
+            String time = dateTime.substring(11).trim();
+            if (!time.isEmpty()) {
+                byTime = LocalTime.parse(time);
+            }
+            return new Deadline(message.substring(9, byIndex).trim(), byDate, byTime);
         } catch (IndexOutOfBoundsException e) {
             throw new HelperBotArgumentException("Wrong format for Deadline");
+        } catch (DateTimeParseException e) {
+            throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /by");
         }
     }
 
     public static Deadline of(String[] message) throws HelperBotFileException {
         try {
-            Deadline deadline = new Deadline(message[2], message[3]);
-            if (message[1].equals("1")) {
-                deadline.markAsDone();
-            } else if (!message[1].equals("0")) {
-                throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
-            }
-            return deadline;
+            return getDeadline(message);
         } catch (IndexOutOfBoundsException e) {
             throw new HelperBotFileException("Incomplete data for Deadline");
+        } catch (DateTimeParseException e) {
+            throw new HelperBotFileException("Date and Time must be in YYYY-MM-DD and hh:mm respectively");
         }
     }
 
+    private static Deadline getDeadline(String[] message) throws HelperBotFileException {
+        LocalDate byDate = LocalDate.parse(message[3]);
+        LocalTime byTime = null;
+        if (message.length == 5) {
+            byTime = LocalTime.parse(message[4]);
+        }
+        Deadline deadline = new Deadline(message[2], byDate, byTime);
+        if (message[1].equals("1")) {
+            deadline.markAsDone();
+        } else if (!message[1].equals("0")) {
+            throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
+        }
+        return deadline;
+    }
+
     public String toStrInFile() {
-        return String.join(",", new String[]{"D", super.toStrInFile(), this.by});
+        return String.join(",", new String[]{"D", super.toStrInFile(),
+                this.byDate.toString(), this.byTime == null ? "" : this.byTime.toString()
+        });
     }
 
     @Override
     public String toString() {
         return "[D]"
                 + super.toString()
-                + " (by: " + by + ")";
+                + " (by: "
+                + this.byDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                + (this.byTime == null ? "" : ", " + this.byTime)
+                + ")";
     }
 }
