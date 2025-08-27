@@ -6,61 +6,92 @@ ____________________________________________________________
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] read book
-2. [D][ ] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
+2. [D][ ] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
 ____________________________________________________________
 
 ____________________________________________________________
 Got it. I've added this task:
 	[T][ ] borrow book
-You now have 5 tasks in the list.
-____________________________________________________________
-
-____________________________________________________________
-Here are the tasks in your list:
-1. [T][ ] read book
-2. [D][ ] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
-5. [T][ ] borrow book
-____________________________________________________________
-
-____________________________________________________________
-Got it. I've added this task:
-	[D][ ] return book (by: Sunday)
-You now have 6 tasks in the list.
-____________________________________________________________
-
-____________________________________________________________
-Got it. I've added this task:
-	[E][ ] project meeting (from: Mon 2pm, to: 4pm)
-You now have 7 tasks in the list.
-____________________________________________________________
-
-____________________________________________________________
-Got it. I've added this task:
-	[D][ ] do homework (by: no idea :-p)
 You now have 8 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
+Here are the tasks in your list:
+1. [T][ ] read book
+2. [D][ ] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
+8. [T][ ] borrow book
+____________________________________________________________
+
+____________________________________________________________
+Invalid Argument: Wrong format for Deadline
+____________________________________________________________
+
+____________________________________________________________
 Got it. I've added this task:
-	[E][ ] CS2103T IP (from: -, to: -)
+	[D][ ] return book (by: Oct 9 2025, 12:00)
 You now have 9 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Got it. I've added this task:
+	[D][ ] return book (by: Oct 9 2025)
+You now have 10 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Invalid Argument: Please enter date and time in YYYY-MM-DD hh:mm after /from and /to
+____________________________________________________________
+
+____________________________________________________________
+Got it. I've added this task:
+	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
+You now have 11 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Got it. I've added this task:
+	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
+You now have 12 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Got it. I've added this task:
+	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
+You now have 13 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Got it. I've added this task:
+	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
+You now have 14 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] read book
-2. [D][ ] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
-5. [T][ ] borrow book
-6. [D][ ] return book (by: Sunday)
-7. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
-8. [D][ ] do homework (by: no idea :-p)
-9. [E][ ] CS2103T IP (from: -, to: -)
+2. [D][ ] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
+8. [T][ ] borrow book
+9. [D][ ] return book (by: Oct 9 2025, 12:00)
+10. [D][ ] return book (by: Oct 9 2025)
+11. [E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
+12. [E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
+13. [E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
+14. [E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
 ____________________________________________________________
 
 ____________________________________________________________
@@ -70,14 +101,19 @@ ____________________________________________________________
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] read book
-2. [D][ ] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
-5. [T][ ] borrow book
-6. [D][ ] return book (by: Sunday)
-7. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
-8. [D][ ] do homework (by: no idea :-p)
-9. [E][ ] CS2103T IP (from: -, to: -)
+2. [D][ ] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
+8. [T][ ] borrow book
+9. [D][ ] return book (by: Oct 9 2025, 12:00)
+10. [D][ ] return book (by: Oct 9 2025)
+11. [E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
+12. [E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
+13. [E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
+14. [E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
 ____________________________________________________________
 
 ____________________________________________________________
@@ -87,29 +123,34 @@ ____________________________________________________________
 
 ____________________________________________________________
 Nice! I have marked task 2 as done!
-	[D][X] return book (by: June 6th)
+	[D][X] return book (by: Aug 27 2025, 21:30)
 ____________________________________________________________
 
 ____________________________________________________________
-Invalid Argument: Task 12 is not found
+Invalid Argument: Task 100 is not found
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 5!
+Nice! I have removed task 8!
 	[T][ ] borrow book
-You now have 8 tasks in the list.
+You now have 13 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][X] read book
-2. [D][X] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
-5. [D][ ] return book (by: Sunday)
-6. [E][ ] project meeting (from: Mon 2pm, to: 4pm)
-7. [D][ ] do homework (by: no idea :-p)
-8. [E][ ] CS2103T IP (from: -, to: -)
+2. [D][X] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
+8. [D][ ] return book (by: Oct 9 2025, 12:00)
+9. [D][ ] return book (by: Oct 9 2025)
+10. [E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
+11. [E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
+12. [E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
+13. [E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
 ____________________________________________________________
 
 ____________________________________________________________
@@ -119,39 +160,54 @@ ____________________________________________________________
 
 ____________________________________________________________
 Nice! I have marked task 2 as not done yet!
-	[D][ ] return book (by: June 6th)
+	[D][ ] return book (by: Aug 27 2025, 21:30)
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 5!
-	[D][ ] return book (by: Sunday)
+Nice! I have removed task 8!
+	[D][ ] return book (by: Oct 9 2025, 12:00)
+You now have 12 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have removed task 8!
+	[D][ ] return book (by: Oct 9 2025)
+You now have 11 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have removed task 8!
+	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
+You now have 10 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have removed task 8!
+	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
+You now have 9 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have removed task 8!
+	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
+You now have 8 tasks in the list.
+____________________________________________________________
+
+____________________________________________________________
+Nice! I have removed task 8!
+	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
 You now have 7 tasks in the list.
-____________________________________________________________
-
-____________________________________________________________
-Nice! I have removed task 5!
-	[E][ ] project meeting (from: Mon 2pm, to: 4pm)
-You now have 6 tasks in the list.
-____________________________________________________________
-
-____________________________________________________________
-Nice! I have removed task 5!
-	[D][ ] do homework (by: no idea :-p)
-You now have 5 tasks in the list.
-____________________________________________________________
-
-____________________________________________________________
-Nice! I have removed task 5!
-	[E][ ] CS2103T IP (from: -, to: -)
-You now have 4 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] read book
-2. [D][ ] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
+2. [D][ ] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
 ____________________________________________________________
 
 ____________________________________________________________
@@ -167,15 +223,26 @@ Invalid Argument: Please enter /from before entering /to
 ____________________________________________________________
 
 ____________________________________________________________
+Invalid Argument: From datetime must be before to datetime
+____________________________________________________________
+
+____________________________________________________________
+Invalid Argument: From datetime must be before to datetime
+____________________________________________________________
+
+____________________________________________________________
 Invalid Argument: Please enter the deadline after /by
 ____________________________________________________________
 
 ____________________________________________________________
 Here are the tasks in your list:
 1. [T][ ] read book
-2. [D][ ] return book (by: June 6th)
-3. [E][ ] project meeting (from: Aug 6th 2pm, to: Aug 6th 4pm)
-4. [T][X] join sports club
+2. [D][ ] return book (by: Aug 27 2025, 21:30)
+3. [D][X] ca1 (by: Sep 12 2025)
+4. [E][ ] ca2 (from: Sep 12 2025, 22:10) (to: Oct 12 2025, 22:10)
+5. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025)
+6. [E][ ] ca2 (from: Sep 12 2025) (to: Oct 12 2025, 13:10)
+7. [E][ ] ca2 (from: Aug 12 2025, 22:10) (to: Aug 12 2025)
 ____________________________________________________________
 
 ____________________________________________________________

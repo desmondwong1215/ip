@@ -23,7 +23,7 @@ public class Deadline extends Task {
             String dateTime = message.substring(byIndex + 4).trim();
             LocalDate byDate = LocalDate.parse(dateTime.substring(0, 10));
             LocalTime byTime = null;
-            String time = dateTime.substring(11).trim();
+            String time = dateTime.substring(10).trim();
             if (!time.isEmpty()) {
                 byTime = LocalTime.parse(time);
             }
