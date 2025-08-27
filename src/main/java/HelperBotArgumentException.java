@@ -1,4 +1,4 @@
-public class HelperBotArgumentException extends IllegalArgumentException {
+public class HelperBotArgumentException extends Exception {
 
     public HelperBotArgumentException(String error) {
         super(error);

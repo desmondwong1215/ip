@@ -6,14 +6,19 @@ event project meeting /from Mon 2pm /to 4pm
 deadline do homework /by no idea :-p
 event CS2103T IP /from - /to -
 list
-delete 5
+delete 100
 list
 mark 1
 mark 2 hello world
 mark 12
-delete 2
+delete 5
 list
 unmark 1
+unmark 2
+delete 5
+delete 5
+delete 5
+delete 5
 list
 blah
 event project meeting
