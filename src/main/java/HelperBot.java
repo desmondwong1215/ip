@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HelperBot {
@@ -13,7 +12,11 @@ public class HelperBot {
     private static final String NAME = "HelperBot";
     private static final String SRC = "data/HelperBot.txt";
 
-    private final ArrayList<Task> tasks = new ArrayList<>();
+    private final TaskList tasks;
+
+    public HelperBot() {
+        this.tasks = new TaskList();
+    }
 
     /// print message to user
     private void print(String message) {
@@ -36,20 +39,6 @@ public class HelperBot {
         this.print("Bye. Hope to see you again soon!");
     }
 
-    /// print the task one by one
-    private void printTasks(ArrayList<Task> tasks) {
-        if (tasks.isEmpty()) {
-            this.print("You do not have any task.");
-            return;
-        }
-
-        StringBuilder taskDescription = new StringBuilder("Here are the tasks in your list:");
-        for (int i = 0; i < tasks.size(); i++) {
-            taskDescription.append("\n").append(i + 1).append(". ").append(tasks.get(i));
-        }
-        this.print(taskDescription.toString());
-    }
-
     /// change the task status
     private void changeTaskStatus(String[] message, boolean mark) {
         String outcome = "";
@@ -59,11 +48,11 @@ public class HelperBot {
             index = Integer.parseInt(message[1]) - 1;
             if (mark) {
                 // mark the task as done
-                this.tasks.get(index).markAsDone();
+                this.tasks.mark(index);
                 outcome = "Nice! I have marked task " + (index + 1) + " as done!\n\t" + this.tasks.get(index);
             } else {
                 // mark the task as not done
-                this.tasks.get(index).markAsNotDone();
+                this.tasks.unmark(index);
                 outcome = "Nice! I have marked task " + (index  + 1) + " as not done yet!\n\t" + this.tasks.get(index);
             }
         } catch (IndexOutOfBoundsException e) {
@@ -143,13 +132,7 @@ public class HelperBot {
     private void findTasks(String[] splitMessage) {
         try {
             LocalDate date = LocalDate.parse(splitMessage[1]);
-            ArrayList<Task> tasks = new ArrayList<>();
-            for (Task task: this.tasks) {
-                if (task.isSameDate(date)) {
-                    tasks.add(task);
-                }
-            }
-            this.printTasks(tasks);
+            this.print(this.tasks.getTaskOnDate(date).toString());
         } catch (DateTimeParseException e) {
             this.print("Invalid Argument: Please enter the date in YYYY-MM-DD.");
         } catch (IndexOutOfBoundsException e) {
@@ -183,9 +166,7 @@ public class HelperBot {
     private void writeToFile() {
         try {
             FileWriter fw = new FileWriter(HelperBot.SRC);
-            for (Task task: this.tasks) {
-                fw.write(task.toStrInFile() + "\n");
-            }
+            fw.write(this.tasks.toStrInFile());
             fw.close();
         } catch (IOException e) {
             this.print("Error: Unable to write task to the file.");
@@ -221,7 +202,7 @@ public class HelperBot {
                          break label;
                      case LIST:
                          // print all the tasks
-                         this.printTasks(this.tasks);
+                         this.print(this.tasks.toString());
                          break;
                      case MARK:
                          // mark the task as done
