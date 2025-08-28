@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -10,7 +6,6 @@ public class HelperBot {
 
     private static final String LINE = "____________________________________________________________";
     private static final String NAME = "HelperBot";
-    private static final String SRC = "data/HelperBot.txt";
 
     private final TaskList tasks;
 
@@ -35,8 +30,13 @@ public class HelperBot {
 
     ///  exit the whole program
     private void exit() {
-        writeToFile();
-        this.print("Bye. Hope to see you again soon!");
+        String errorMessage = Storage.writeToStorage(this.tasks);
+        if (errorMessage.isEmpty()) {
+            this.print("Bye. Hope to see you again soon!");
+        } else {
+            this.print(errorMessage + "\nBye. Hope to see you again soon!");
+        }
+
     }
 
     /// change the task status
@@ -140,44 +140,13 @@ public class HelperBot {
         }
     }
 
-    /// load data
-    private boolean loadData() {
-        boolean isSuccess = true;
-        try {
-            File file = new File(HelperBot.SRC);
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNext()) {
-                this.tasks.add(Task.of(scanner.nextLine()));
-            }
-        } catch (FileNotFoundException e) {
-            isSuccess = false;
-            this.print(HelperBot.SRC + " is not found.");
-            exit();
-        } catch (HelperBotFileException e) {
-            isSuccess = false;
-            this.print(e.toString());
-            exit();
-        }
-
-        return isSuccess;
-    }
-
-    ///  write the data back to the file
-    private void writeToFile() {
-        try {
-            FileWriter fw = new FileWriter(HelperBot.SRC);
-            fw.write(this.tasks.toStrInFile());
-            fw.close();
-        } catch (IOException e) {
-            this.print("Error: Unable to write task to the file.");
-        }
-    }
-
     /// initialize the chat
     public void chat() {
 
-        if (!loadData()) {
+        String errorMessage = Storage.loadFromStorage(this.tasks);
+        if (!errorMessage.isEmpty()) {
             // the loading of data is unsuccessful
+            this.print(errorMessage + "\nBye. Hope to see you again soon!");
             return;
         }
 
