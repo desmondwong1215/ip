@@ -1,3 +1,7 @@
+package helperbot.ui;
+
+import helperbot.task.Task;
+
 public class Ui {
 
     private static final String LINE = "____________________________________________________________";
@@ -17,11 +21,11 @@ public class Ui {
     }
 
     public void showMarked(int index, Task task) {
-        this.print("Nice! I have marked task " + (index + 1) + " as done!\n\t" + task);
+        this.print("Nice! I have marked helperbot.task " + (index + 1) + " as done!\n\t" + task);
     }
 
     public void showUnmarked(int index, Task task) {
-        this.print("Nice! I have marked task " + (index + 1) + " as not done yet!\n\t" + task);
+        this.print("Nice! I have marked helperbot.task " + (index + 1) + " as not done yet!\n\t" + task);
     }
 
     public void showError(String message) {

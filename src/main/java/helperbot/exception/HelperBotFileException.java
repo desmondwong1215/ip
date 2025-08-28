@@ -1,3 +1,5 @@
+package helperbot.exception;
+
 public class HelperBotFileException extends Exception {
 
     public HelperBotFileException(String error) {

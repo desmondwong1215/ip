@@ -1,3 +1,12 @@
+package helperbot.ui;
+
+import helperbot.command.Command;
+import helperbot.exception.HelperBotCommandException;
+import helperbot.exception.HelperBotFileException;
+import helperbot.parser.Parser;
+import helperbot.storage.Storage;
+import helperbot.task.TaskList;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -41,13 +50,13 @@ public class HelperBot {
                     break;
                 }
             } catch (HelperBotCommandException e) {
-                 // catch an invalid command
+                 // catch an invalid HelperBot.command
                  this.ui.showError(e.toString());
             }
         }
     }
 
     public static void main(String[] args) {
-        new HelperBot("data/HelperBot.txt").chat();
+        new HelperBot("./helperbot/storage/data/HelperBot.txt").chat();
     }
 }

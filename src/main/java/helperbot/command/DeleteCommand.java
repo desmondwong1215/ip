@@ -1,3 +1,10 @@
+package helperbot.command;
+
+import helperbot.storage.Storage;
+import helperbot.task.Task;
+import helperbot.task.TaskList;
+import helperbot.ui.Ui;
+
 public class DeleteCommand extends Command {
 
     private final String[] message;
@@ -12,7 +19,7 @@ public class DeleteCommand extends Command {
         try {
             index = Integer.parseInt(this.message[1]) - 1;
             Task task = tasks.remove(index);
-            String outcome = "Nice! I have removed task "
+            String outcome = "Nice! I have removed helperbot.task "
                     + (index  + 1)
                     + "!\n\t"
                     + task
@@ -23,9 +30,9 @@ public class DeleteCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             if (this.message.length == 1) {
                 // the message length < 2, index is not provided
-                ui.showError("Invalid Argument: Please enter the index of the task after " + this.message[0] + ".");
+                ui.showError("Invalid Argument: Please enter the index of the helperbot.task after " + this.message[0] + ".");
             } else {
-                // index >= tasks.size(), task is not found
+                // index >= tasks.size(), helperbot.task is not found
                 ui.showError("Invalid Argument: Task " + (index + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
