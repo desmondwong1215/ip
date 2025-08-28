@@ -1,3 +1,7 @@
+package helperbot.task;
+
+import helperbot.exception.HelperBotFileException;
+
 import java.time.LocalDate;
 
 public class Task {
@@ -22,7 +26,7 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (isDone ? "X" : " "); // mark done helperbot.task with X
     }
 
     public void markAsDone() {

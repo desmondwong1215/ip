@@ -1,3 +1,8 @@
+package helperbot.task;
+
+import helperbot.exception.HelperBotArgumentException;
+import helperbot.exception.HelperBotFileException;
+
 public class ToDo extends Task {
 
     public ToDo(String description) {

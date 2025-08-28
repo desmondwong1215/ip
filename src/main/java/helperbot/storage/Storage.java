@@ -1,3 +1,9 @@
+package helperbot.storage;
+
+import helperbot.exception.HelperBotFileException;
+import helperbot.task.Task;
+import helperbot.task.TaskList;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

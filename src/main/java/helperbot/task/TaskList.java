@@ -1,3 +1,5 @@
+package helperbot.task;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -58,7 +60,7 @@ public class TaskList {
     @Override
     public String toString() {
         if (this.tasks.isEmpty()) {
-            return "You do not have any task.";
+            return "You do not have any helperbot.task.";
         }
 
         StringBuilder taskDescription = new StringBuilder("Here are the tasks in your list:");

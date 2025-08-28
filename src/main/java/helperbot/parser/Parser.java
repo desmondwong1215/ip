@@ -1,3 +1,8 @@
+package helperbot.parser;
+
+import helperbot.command.*;
+import helperbot.exception.HelperBotCommandException;
+
 public class Parser {
 
     public static Command parse(String message) throws HelperBotCommandException {
@@ -12,7 +17,7 @@ public class Parser {
              case "todo", "deadline", "event" -> new AddCommand(command, message);
              case "delete" -> new DeleteCommand(splitMessage);
              case "check" -> new CheckCommand(splitMessage);
-             // invalid command
+             // invalid helperbot.command
              default -> throw new HelperBotCommandException(splitMessage[0] + " is not found.");
          };
     }
