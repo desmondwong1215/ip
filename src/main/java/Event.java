@@ -103,6 +103,11 @@ public class Event extends Task {
     }
 
     @Override
+    public boolean isSameDate(LocalDate date) {
+        return this.toDate.isEqual(date);
+    }
+
+    @Override
     public String toString() {
         return "[E]"
                 + super.toString()

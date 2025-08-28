@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,17 +37,17 @@ public class HelperBot {
     }
 
     /// print the task one by one
-    private void printTasks() {
-        if (this.tasks.isEmpty()) {
+    private void printTasks(ArrayList<Task> tasks) {
+        if (tasks.isEmpty()) {
             this.print("You do not have any task.");
             return;
         }
 
-        StringBuilder tasks = new StringBuilder("Here are the tasks in your list:");
-        for (int i = 0; i < this.tasks.size(); i++) {
-            tasks. append("\n").append(i + 1).append(". ").append(this.tasks.get(i));
+        StringBuilder taskDescription = new StringBuilder("Here are the tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            taskDescription.append("\n").append(i + 1).append(". ").append(tasks.get(i));
         }
-        this.print(tasks.toString());
+        this.print(taskDescription.toString());
     }
 
     /// change the task status
@@ -70,7 +72,7 @@ public class HelperBot {
                 outcome = "Invalid Argument: Please enter the index of the task after " + message[0] + ".";
             } else {
                 // index >= tasks.size(), task is not found
-                outcome = "Invalid Argument: Task " + (index + 1) + " is not found";
+                outcome = "Invalid Argument: Task " + (index + 1) + " is not found.";
             }
         } catch (NumberFormatException e) {
             // the second input cannot be parsed as an integer
@@ -126,7 +128,7 @@ public class HelperBot {
                 outcome = "Invalid Argument: Please enter the index of the task after " + message[0] + ".";
             } else {
                 // index >= tasks.size(), task is not found
-                outcome = "Invalid Argument: Task " + (index + 1) + " is not found";
+                outcome = "Invalid Argument: Task " + (index + 1) + " is not found.";
             }
         } catch (NumberFormatException e) {
             // the second input cannot be parsed as an integer
@@ -134,6 +136,24 @@ public class HelperBot {
         } finally {
             // print the outcome
             this.print(outcome);
+        }
+    }
+
+    /// find task due on date
+    private void findTasks(String[] splitMessage) {
+        try {
+            LocalDate date = LocalDate.parse(splitMessage[1]);
+            ArrayList<Task> tasks = new ArrayList<>();
+            for (Task task: this.tasks) {
+                if (task.isSameDate(date)) {
+                    tasks.add(task);
+                }
+            }
+            this.printTasks(tasks);
+        } catch (DateTimeParseException e) {
+            this.print("Invalid Argument: Please enter the date in YYYY-MM-DD.");
+        } catch (IndexOutOfBoundsException e) {
+            this.print("Invalid Argument: Date is missing.");
         }
     }
 
@@ -168,7 +188,7 @@ public class HelperBot {
             }
             fw.close();
         } catch (IOException e) {
-            this.print("Error: Unable to write task to the file");
+            this.print("Error: Unable to write task to the file.");
         }
     }
 
@@ -201,7 +221,7 @@ public class HelperBot {
                          break label;
                      case LIST:
                          // print all the tasks
-                         this.printTasks();
+                         this.printTasks(this.tasks);
                          break;
                      case MARK:
                          // mark the task as done
@@ -220,6 +240,9 @@ public class HelperBot {
                      case DELETE:
                          // delete the task
                          this.delete(splitMessage);
+                         break;
+                     case FIND:
+                         this.findTasks(splitMessage);
                          break;
                      default:
                          // invalid command
