@@ -15,7 +15,7 @@ Here are the tasks in your list:
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[T][ ] borrow book
 You now have 8 tasks in the list.
 ____________________________________________________________
@@ -38,13 +38,13 @@ Invalid Argument: Wrong format for Deadline
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[D][ ] return book (by: Oct 9 2025, 12:00)
 You now have 9 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[D][ ] return book (by: Oct 9 2025)
 You now have 10 tasks in the list.
 ____________________________________________________________
@@ -55,25 +55,25 @@ Invalid Argument: Please enter date and time in YYYY-MM-DD hh:mm after /from and
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
 You now have 11 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
 You now have 12 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
 You now have 13 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Got it. I've added this task:
+Got it. I've added this helperbot.task:
 	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
 You now have 14 tasks in the list.
 ____________________________________________________________
@@ -120,12 +120,12 @@ Here are the tasks in your list:
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked task 1 as done!
+Nice! I have marked helperbot.task 1 as done!
 	[T][X] read book
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked task 2 as done!
+Nice! I have marked helperbot.task 2 as done!
 	[D][X] return book (by: Aug 27 2025, 21:30)
 ____________________________________________________________
 
@@ -135,7 +135,7 @@ Invalid Argument: Task 100 is not found.
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[T][ ] borrow book
 You now have 13 tasks in the list.
 ____________________________________________________________
@@ -158,47 +158,47 @@ Here are the tasks in your list:
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked task 1 as not done yet!
+Nice! I have marked helperbot.task 1 as not done yet!
 	[T][ ] read book
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have marked task 2 as not done yet!
+Nice! I have marked helperbot.task 2 as not done yet!
 	[D][ ] return book (by: Aug 27 2025, 21:30)
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[D][ ] return book (by: Oct 9 2025, 12:00)
 You now have 12 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[D][ ] return book (by: Oct 9 2025)
 You now have 11 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025, 12:00)
 You now have 10 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025, 12:00)
 You now have 9 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[E][ ] project meeting (from: Oct 9 2025, 12:00) (to: Nov 9 2025)
 You now have 8 tasks in the list.
 ____________________________________________________________
 
 ____________________________________________________________
-Nice! I have removed task 8!
+Nice! I have removed helperbot.task 8!
 	[E][ ] project meeting (from: Oct 9 2025) (to: Nov 9 2025)
 You now have 7 tasks in the list.
 ____________________________________________________________
@@ -211,7 +211,7 @@ Here are the tasks in your list:
 ____________________________________________________________
 
 ____________________________________________________________
-You do not have any task.
+You do not have any helperbot.task.
 ____________________________________________________________
 
 ____________________________________________________________
