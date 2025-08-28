@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -8,9 +10,23 @@ public class HelperBot {
     private static final String NAME = "HelperBot";
 
     private final TaskList tasks;
+//    private final Ui ui;
+    private final Storage storage;
 
-    public HelperBot() {
-        this.tasks = new TaskList();
+    public HelperBot(String filePath) {
+        TaskList tasks1;
+//        ui = new Ui();
+        this.storage = new Storage(filePath);
+        try {
+            tasks1 = new TaskList(this.storage.load());
+        } catch (FileNotFoundException e) {
+            this.print(filePath + " is not found.");
+            tasks1 = new TaskList();
+        } catch (HelperBotFileException e) {
+            this.print(e.toString());
+            tasks1 = new TaskList();
+        }
+        this.tasks = tasks1;
     }
 
     /// print message to user
@@ -30,13 +46,12 @@ public class HelperBot {
 
     ///  exit the whole program
     private void exit() {
-        String errorMessage = Storage.writeToStorage(this.tasks);
-        if (errorMessage.isEmpty()) {
+        try {
+            this.storage.write(this.tasks);
             this.print("Bye. Hope to see you again soon!");
-        } else {
-            this.print(errorMessage + "\nBye. Hope to see you again soon!");
+        } catch (IOException e) {
+            this.print("Error: Unable to write task to the file.\nBye. Hope to see you again soon!");
         }
-
     }
 
     /// change the task status
@@ -142,14 +157,6 @@ public class HelperBot {
 
     /// initialize the chat
     public void chat() {
-
-        String errorMessage = Storage.loadFromStorage(this.tasks);
-        if (!errorMessage.isEmpty()) {
-            // the loading of data is unsuccessful
-            this.print(errorMessage + "\nBye. Hope to see you again soon!");
-            return;
-        }
-
         // greet the user
         this.greet();
 
@@ -206,7 +213,8 @@ public class HelperBot {
     }
 
     public static void main(String[] args) {
-        HelperBot bot = new HelperBot();
+        String filePath = "data/HelperBot.txt";
+        HelperBot bot = new HelperBot(filePath);
         bot.chat();
     }
 }
