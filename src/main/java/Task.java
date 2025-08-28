@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Task {
     private final String description;
     private boolean isDone;
@@ -33,6 +35,10 @@ public class Task {
 
     public String toStrInFile() {
         return String.join(",", new String[]{isDone ? "1" : "0", this.description});
+    }
+
+    public boolean isSameDate(LocalDate date) {
+        return false;
     }
 
     @Override

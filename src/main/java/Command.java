@@ -8,6 +8,7 @@ public enum Command {
     DEADLINE,
     EVENT,
     DELETE,
+    FIND,
     UNKNOWN;
 
     public static Command getCommand(String command) {
@@ -20,6 +21,7 @@ public enum Command {
             case "deadline" -> DEADLINE;
             case "event" -> EVENT;
             case "delete" -> DELETE;
+            case "find" -> FIND;
             default -> UNKNOWN;
         };
     }
