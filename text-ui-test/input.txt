@@ -25,6 +25,9 @@ delete 8
 delete 8
 delete 8
 delete 8
+find 2025-10-12
+find 2025-10-09
+find
 list
 blah
 event project meeting
