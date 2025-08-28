@@ -1,28 +1,8 @@
-public enum Command {
+public abstract class Command {
 
-    BYE,
-    LIST,
-    MARK,
-    UNMARK,
-    TODO,
-    DEADLINE,
-    EVENT,
-    DELETE,
-    FIND,
-    UNKNOWN;
+    public abstract void execute(TaskList tasks, Storage storage, Ui ui);
 
-    public static Command getCommand(String command) {
-        return switch (command.toLowerCase()) {
-            case "bye" -> BYE;
-            case "list" -> LIST;
-            case "mark" -> MARK;
-            case "unmark" -> UNMARK;
-            case "todo" -> TODO;
-            case "deadline" -> DEADLINE;
-            case "event" -> EVENT;
-            case "delete" -> DELETE;
-            case "find" -> FIND;
-            default -> UNKNOWN;
-        };
+    public boolean isExit() {
+        return false;
     }
 }
