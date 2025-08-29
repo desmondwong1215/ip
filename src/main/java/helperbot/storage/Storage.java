@@ -1,15 +1,15 @@
 package helperbot.storage;
 
-import helperbot.exception.HelperBotFileException;
-import helperbot.task.Task;
-import helperbot.task.TaskList;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import helperbot.exception.HelperBotFileException;
+import helperbot.task.Task;
+import helperbot.task.TaskList;
 
 /**
  * Represent a class that is responsible for loading and writing all the <code>Task</code> from and to a specific file.

@@ -1,8 +1,8 @@
 package helperbot.task;
 
-import helperbot.exception.HelperBotFileException;
-
 import java.time.LocalDate;
+
+import helperbot.exception.HelperBotFileException;
 
 /**
  * Represent a task in <b>HelperBot</b>.
