@@ -73,6 +73,11 @@ public class Task {
         return false;
     }
 
+    /**
+     * Check if the <code>Task</code>'s description contain following keyword.
+     * @param description The keyword to be matched.
+     * @return true if matched.
+     */
     public boolean match(String description) {
         return this.description.contains(description);
     }

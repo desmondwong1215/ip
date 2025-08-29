@@ -66,6 +66,11 @@ public class TaskList {
         return tasks;
     }
 
+    /**
+     * Generate <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
+     * @param description The keyword to be matched.
+     * @return <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
+     */
     public TaskList match(String description) {
         TaskList tasks = new TaskList();
         for (Task task: this.tasks) {
