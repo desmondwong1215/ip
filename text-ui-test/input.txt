@@ -28,6 +28,9 @@ delete 8
 check 2025-10-12
 check 2025-10-09
 check
+find c
+find does not exist
+find
 list
 blah
 event project meeting

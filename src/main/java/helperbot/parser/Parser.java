@@ -11,12 +11,13 @@ public class Parser {
 
          return switch (command) {
              case "bye" -> new ExitCommand();
+             case "check" -> new CheckCommand(splitMessage);
+             case "delete" -> new DeleteCommand(splitMessage);
+             case "find" -> new FindCommand(message);
              case "list" -> new ListCommand();
              case "mark" -> new MarkCommand(splitMessage, true);
-             case "unmark" -> new MarkCommand(splitMessage, false);
              case "todo", "deadline", "event" -> new AddCommand(command, message);
-             case "delete" -> new DeleteCommand(splitMessage);
-             case "check" -> new CheckCommand(splitMessage);
+             case "unmark" -> new MarkCommand(splitMessage, false);
              // invalid helperbot.command
              default -> throw new HelperBotCommandException(splitMessage[0] + " is not found.");
          };

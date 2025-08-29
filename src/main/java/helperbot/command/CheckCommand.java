@@ -19,7 +19,7 @@ public class CheckCommand extends Command {
     public void execute(TaskList tasks, Storage storage, Ui ui) {
         try {
             LocalDate date = LocalDate.parse(this.message[1]);
-            ui.print(tasks.getTaskOnDate(date).toString());
+            ui.printTaskList(true, tasks.getTaskOnDate(date).toString());
         } catch (DateTimeParseException e) {
             ui.showError("Invalid Argument: Please enter the date in YYYY-MM-DD.");
         } catch (IndexOutOfBoundsException e) {

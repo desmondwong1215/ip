@@ -25,12 +25,7 @@ public class AddCommand extends Command {
                 default -> Event.fromInput(this.message);
             };
             tasks.add(task);
-            String outcome = "Got it. I've added this helperbot.task:\n\t"
-                    + task
-                    + "\nYou now have "
-                    + tasks.size()
-                    + " tasks in the list.";
-            ui.print(outcome);
+            ui.showAdd(task, tasks.size());
         } catch (HelperBotArgumentException e) {
             // /by is not entered correctly
             ui.showError(e.toString());

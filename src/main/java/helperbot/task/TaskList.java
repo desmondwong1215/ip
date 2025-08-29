@@ -41,6 +41,16 @@ public class TaskList {
         return tasks;
     }
 
+    public TaskList match(String description) {
+        TaskList tasks = new TaskList();
+        for (Task task: this.tasks) {
+            if (task.match(description)) {
+                tasks.add(task);
+            }
+        }
+        return tasks;
+    }
+
     public Task remove(int index) {
         return this.tasks.remove(index);
     }
@@ -59,11 +69,7 @@ public class TaskList {
 
     @Override
     public String toString() {
-        if (this.tasks.isEmpty()) {
-            return "You do not have any helperbot.task.";
-        }
-
-        StringBuilder taskDescription = new StringBuilder("Here are the tasks in your list:");
+        StringBuilder taskDescription = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             taskDescription.append("\n").append(i + 1).append(". ").append(tasks.get(i));
         }

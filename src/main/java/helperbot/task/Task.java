@@ -45,6 +45,10 @@ public class Task {
         return false;
     }
 
+    public boolean match(String description) {
+        return this.description.contains(description);
+    }
+
     @Override
     public String toString() {
         return "["
