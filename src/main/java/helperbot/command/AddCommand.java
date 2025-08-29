@@ -1,8 +1,13 @@
 package helperbot.command;
 
+
 import helperbot.exception.HelperBotArgumentException;
 import helperbot.storage.Storage;
-import helperbot.task.*;
+import helperbot.task.Deadline;
+import helperbot.task.Event;
+import helperbot.task.Task;
+import helperbot.task.TaskList;
+import helperbot.task.ToDo;
 import helperbot.ui.Ui;
 
 public class AddCommand extends Command {
@@ -19,10 +24,10 @@ public class AddCommand extends Command {
     public void execute(TaskList tasks, Storage storage, Ui ui) {
         try {
             Task task = switch (this.command) {
-                case "todo" -> ToDo.fromInput(this.message);
-                case "deadline" -> Deadline.fromInput(this.message);
-                // helperbot.command is Event
-                default -> Event.fromInput(this.message);
+            case "todo" -> ToDo.fromInput(this.message);
+            case "deadline" -> Deadline.fromInput(this.message);
+            // helperbot.command is Event
+            default -> Event.fromInput(this.message);
             };
             tasks.add(task);
             String outcome = "Got it. I've added this helperbot.task:\n\t"

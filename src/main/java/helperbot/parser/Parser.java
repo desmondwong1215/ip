@@ -1,6 +1,13 @@
 package helperbot.parser;
 
-import helperbot.command.*;
+
+import helperbot.command.AddCommand;
+import helperbot.command.CheckCommand;
+import helperbot.command.Command;
+import helperbot.command.DeleteCommand;
+import helperbot.command.ExitCommand;
+import helperbot.command.ListCommand;
+import helperbot.command.MarkCommand;
 import helperbot.exception.HelperBotCommandException;
 
 public class Parser {
@@ -10,15 +17,15 @@ public class Parser {
         String command = splitMessage[0].toLowerCase();
 
          return switch (command) {
-             case "bye" -> new ExitCommand();
-             case "list" -> new ListCommand();
-             case "mark" -> new MarkCommand(splitMessage, true);
-             case "unmark" -> new MarkCommand(splitMessage, false);
-             case "todo", "deadline", "event" -> new AddCommand(command, message);
-             case "delete" -> new DeleteCommand(splitMessage);
-             case "check" -> new CheckCommand(splitMessage);
-             // invalid helperbot.command
-             default -> throw new HelperBotCommandException(splitMessage[0] + " is not found.");
+         case "bye" -> new ExitCommand();
+         case "list" -> new ListCommand();
+         case "mark" -> new MarkCommand(splitMessage, true);
+         case "unmark" -> new MarkCommand(splitMessage, false);
+         case "todo", "deadline", "event" -> new AddCommand(command, message);
+         case "delete" -> new DeleteCommand(splitMessage);
+         case "check" -> new CheckCommand(splitMessage);
+         // invalid helperbot.command
+         default -> throw new HelperBotCommandException(splitMessage[0] + " is not found.");
          };
     }
 }

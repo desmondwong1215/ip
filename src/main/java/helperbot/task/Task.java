@@ -1,8 +1,8 @@
 package helperbot.task;
 
-import helperbot.exception.HelperBotFileException;
-
 import java.time.LocalDate;
+
+import helperbot.exception.HelperBotFileException;
 
 public class Task {
     private final String description;
