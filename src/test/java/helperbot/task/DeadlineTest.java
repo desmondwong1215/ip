@@ -4,6 +4,9 @@ import helperbot.exception.HelperBotArgumentException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test <code>Deadline</code>.
+ */
 class DeadlineTest {
 
     @Test

@@ -8,6 +8,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represent a <code>Event</code> task.
+ */
 public class Event extends Task {
 
     private final LocalDate fromDate;
@@ -23,6 +26,12 @@ public class Event extends Task {
         this.toTime = toTime;
     }
 
+    /**
+     * Generate a <code>Event</code> from user's input.
+     * @param message Input from user.
+     * @return <code>Event</code>.
+     * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
+     */
     public static Event fromInput(String message) throws HelperBotArgumentException {
         int fromIndex = message.indexOf("/from ");
         int toIndex = message.indexOf("/to ");
@@ -51,22 +60,12 @@ public class Event extends Task {
         }
     }
 
-    private static boolean isToBeforeFrom(LocalDate fromDate, LocalTime fromTime,
-                                          LocalDate toDate, LocalTime toTime) {
-        if (fromDate.isAfter(toDate)) {
-            return true;
-        }
-        return fromDate.isEqual(toDate) && fromTime != null && toTime != null && fromTime.isAfter(toTime);
-    }
-
-    private static LocalTime getTime(String message) {
-        if (message.isEmpty()) {
-            return null;
-        } else {
-            return LocalTime.parse(message);
-        }
-    }
-
+    /**
+     * Generate a <code>Event</code> from file input.
+     * @param message An array of <code>String</code>.
+     * @return <code>Event</code>.
+     * @throws HelperBotFileException If the file is corrupted.
+     */
     public static Event of(String[] message) throws HelperBotFileException {
         try {
             return getEvent(message);
@@ -75,6 +74,40 @@ public class Event extends Task {
         } catch (DateTimeParseException e) {
             throw new HelperBotFileException("Date and Time must be in YYYY-MM-DD and hh:mm respectively");
         }
+    }
+
+    /**
+     * Generate a string representation of <code>Event</code>.
+     * @return A string representation of <code>Event</code>.
+     */
+    public String toStrInFile() {
+        return String.join(",", new String[]{"E", super.toStrInFile(), 
+                this.fromDate.toString(), this.fromTime == null ? "" : this.fromTime.toString(),
+                this.toDate.toString(), this.toTime == null ? "" : this.toTime.toString()
+        });
+    }
+
+    /**
+     * Check if the <code>Event</code> due on the specified date.
+     * @param date The date that <code>Event</code> will due.
+     * @return true if <code>Event</code> due on <code>date</code>.
+     */
+    @Override
+    public boolean isSameDate(LocalDate date) {
+        return this.toDate.isEqual(date);
+    }
+
+    @Override
+    public String toString() {
+        return "[E]"
+                + super.toString()
+                + " (from: "
+                + this.fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                + (this.fromTime == null ? "" : ", " + this.fromTime)
+                + ") (to: "
+                + this.toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                + (this.toTime == null ? "" : ", " + this.toTime)
+                + ")";
     }
 
     private static Event getEvent(String[] message) throws HelperBotFileException {
@@ -100,28 +133,19 @@ public class Event extends Task {
         return event;
     }
 
-    public String toStrInFile() {
-        return String.join(",", new String[]{"E", super.toStrInFile(), 
-                this.fromDate.toString(), this.fromTime == null ? "" : this.fromTime.toString(),
-                this.toDate.toString(), this.toTime == null ? "" : this.toTime.toString()
-        });
+    private static boolean isToBeforeFrom(LocalDate fromDate, LocalTime fromTime,
+                                          LocalDate toDate, LocalTime toTime) {
+        if (fromDate.isAfter(toDate)) {
+            return true;
+        }
+        return fromDate.isEqual(toDate) && fromTime != null && toTime != null && fromTime.isAfter(toTime);
     }
 
-    @Override
-    public boolean isSameDate(LocalDate date) {
-        return this.toDate.isEqual(date);
-    }
-
-    @Override
-    public String toString() {
-        return "[E]"
-                + super.toString()
-                + " (from: "
-                + this.fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
-                + (this.fromTime == null ? "" : ", " + this.fromTime)
-                + ") (to: "
-                + this.toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
-                + (this.toTime == null ? "" : ", " + this.toTime)
-                + ")";
+    private static LocalTime getTime(String message) {
+        if (message.isEmpty()) {
+            return null;
+        } else {
+            return LocalTime.parse(message);
+        }
     }
 }

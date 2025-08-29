@@ -10,6 +10,9 @@ import helperbot.task.TaskList;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Represent <b>HelperBot</b>
+ */
 public class HelperBot {
 
     private final TaskList tasks;
@@ -32,7 +35,9 @@ public class HelperBot {
         this.tasks = tasks1;
     }
 
-    /// initialize the chat
+    /**
+     * Initialize the chat.
+     */
     public void chat() {
         // greet the user
         this.ui.greet();

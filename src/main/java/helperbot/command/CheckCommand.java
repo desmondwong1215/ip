@@ -7,6 +7,9 @@ import helperbot.ui.Ui;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents a command that find all the <code>Task</code> which due on the date specified (if applicable).
+ */
 public class CheckCommand extends Command {
 
     private final String[] message;

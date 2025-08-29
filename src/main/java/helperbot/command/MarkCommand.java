@@ -4,6 +4,11 @@ import helperbot.storage.Storage;
 import helperbot.task.TaskList;
 import helperbot.ui.Ui;
 
+/**
+ * Represent a command that change the status of a <code>Task</code>.
+ * <p>
+ * A <code>Task</code> can be marked as <i>Done</i> and <i>Not Done</i>.
+ */
 public class MarkCommand extends Command {
 
     private final String[] message;

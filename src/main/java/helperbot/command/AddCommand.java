@@ -5,6 +5,12 @@ import helperbot.storage.Storage;
 import helperbot.task.*;
 import helperbot.ui.Ui;
 
+/**
+ * Represents a <code>Command</code> which add a new <code>Task</code> to the <code>Tasklist</code>.
+ * <p>
+ * Based on the first key word in the message, it can add <code>ToDo</code>, <code>Deadline</code>, <code>Event</code>
+ * accordingly.
+ */
 public class AddCommand extends Command {
 
     private final String command;

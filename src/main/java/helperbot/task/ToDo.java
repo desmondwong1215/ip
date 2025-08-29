@@ -3,12 +3,21 @@ package helperbot.task;
 import helperbot.exception.HelperBotArgumentException;
 import helperbot.exception.HelperBotFileException;
 
+/**
+ * Represent a <code>ToDo</code> task.
+ */
 public class ToDo extends Task {
 
     public ToDo(String description) {
         super(description);
     }
 
+    /**
+     * Generate a <code>ToDo</code> from user's input.
+     * @param message Input from user.
+     * @return <code>ToDo</code>.
+     * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
+     */
     public static ToDo fromInput(String message) throws HelperBotArgumentException {
         try {
             String detail = message.substring(5).trim();
@@ -21,6 +30,12 @@ public class ToDo extends Task {
         }
     }
 
+    /**
+     * Generate a <code>Event</code> from file input.
+     * @param message An array of <code>String</code>.
+     * @return <code>Event</code>.
+     * @throws HelperBotFileException If the file is corrupted.
+     */
     public static ToDo of(String[] message) throws HelperBotFileException {
         try {
             ToDo toDo = new ToDo(message[2]);
@@ -35,6 +50,10 @@ public class ToDo extends Task {
         }
     }
 
+    /**
+     * Generate a string representation of <code>ToDo</code>.
+     * @return A string representation of <code>ToDo</code>.
+     */
     public String toStrInFile() {
         return String.join(",", new String[]{"T", super.toStrInFile()});
     }
