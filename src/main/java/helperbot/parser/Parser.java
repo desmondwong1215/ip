@@ -6,6 +6,7 @@ import helperbot.command.CheckCommand;
 import helperbot.command.Command;
 import helperbot.command.DeleteCommand;
 import helperbot.command.ExitCommand;
+import helperbot.command.FindCommand;
 import helperbot.command.ListCommand;
 import helperbot.command.MarkCommand;
 import helperbot.exception.HelperBotCommandException;
