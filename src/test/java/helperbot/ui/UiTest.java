@@ -39,16 +39,6 @@ class UiTest {
     }
 
     @Test
-    void print_validMessage_success() {
-        String testMessage = "This is a test message.";
-        ui.print(testMessage);
-        String expectedOutput = LINE + "\n"
-                + testMessage + "\n"
-                + LINE + "\n";
-        assertEquals(expectedOutput, outputStream.toString().replace("\r\n", "\n"));
-    }
-
-    @Test
     void showMarked_validTask_correctOutput() {
         Task mockTask = new Task("test task") {
             @Override
@@ -58,7 +48,7 @@ class UiTest {
         };
         ui.showMarked(0, mockTask);
         String expectedOutput = LINE + "\n"
-                + "Nice! I have marked helperbot.task 1 as done!\n\t[T][X] test task\n"
+                + "Nice! I have marked HelperBot task 1 as done!\n\t[T][X] test task\n"
                 + LINE + "\n";
         assertEquals(expectedOutput, outputStream.toString().replace("\r\n", "\n"));
     }
@@ -73,7 +63,7 @@ class UiTest {
         };
         ui.showUnmarked(1, mockTask);
         String expectedOutput = LINE + "\n"
-                + "Nice! I have marked helperbot.task 2 as not done yet!\n\t[T][ ] another test task\n"
+                + "Nice! I have marked HelperBot task 2 as not done yet!\n\t[T][ ] another test task\n"
                 + LINE + "\n";
         assertEquals(expectedOutput, outputStream.toString().replace("\r\n", "\n"));
     }

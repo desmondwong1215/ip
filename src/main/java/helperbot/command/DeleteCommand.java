@@ -22,14 +22,7 @@ public class DeleteCommand extends Command {
         try {
             index = Integer.parseInt(this.message[1]) - 1;
             Task task = tasks.remove(index);
-            String outcome = "Nice! I have removed helperbot.task "
-                    + (index  + 1)
-                    + "!\n\t"
-                    + task
-                    + "\nYou now have "
-                    + tasks.size()
-                    + " tasks in the list.";
-            ui.print(outcome);
+            ui.showDelete(task, tasks.size(), index);
         } catch (IndexOutOfBoundsException e) {
             if (this.message.length == 1) {
                 // the message length < 2, index is not provided
