@@ -65,21 +65,6 @@ public class Deadline extends Task {
         }
     }
 
-    private static Deadline getDeadline(String[] message) throws HelperBotFileException {
-        LocalDate byDate = LocalDate.parse(message[3]);
-        LocalTime byTime = null;
-        if (message.length == 5) {
-            byTime = LocalTime.parse(message[4]);
-        }
-        Deadline deadline = new Deadline(message[2], byDate, byTime);
-        if (message[1].equals("1")) {
-            deadline.markAsDone();
-        } else if (!message[1].equals("0")) {
-            throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
-        }
-        return deadline;
-    }
-
     /**
      * Generate a string representation of <code>Deadline</code>.
      * @return A string representation of <code>Deadline</code>.
@@ -108,5 +93,20 @@ public class Deadline extends Task {
                 + this.byDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
                 + (this.byTime == null ? "" : ", " + this.byTime)
                 + ")";
+    }
+
+    private static Deadline getDeadline(String[] message) throws HelperBotFileException {
+        LocalDate byDate = LocalDate.parse(message[3]);
+        LocalTime byTime = null;
+        if (message.length == 5) {
+            byTime = LocalTime.parse(message[4]);
+        }
+        Deadline deadline = new Deadline(message[2], byDate, byTime);
+        if (message[1].equals("1")) {
+            deadline.markAsDone();
+        } else if (!message[1].equals("0")) {
+            throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
+        }
+        return deadline;
     }
 }
