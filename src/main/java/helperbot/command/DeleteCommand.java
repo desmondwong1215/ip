@@ -5,6 +5,9 @@ import helperbot.task.Task;
 import helperbot.task.TaskList;
 import helperbot.ui.Ui;
 
+/**
+ * Represents a command which delete the ith <code>Task</code> in the <code>TaskList</code>.
+ */
 public class DeleteCommand extends Command {
 
     private final String[] message;

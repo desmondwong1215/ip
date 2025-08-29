@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represent a class that is responsible for loading and writing all the <code>Task</code> from and to a specific file.
+ */
 public class Storage {
 
     private final String filePath;
@@ -19,6 +22,12 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Load all the <code>Task</code> from the file.
+     * @return An <code>ArrayList<\Task\></code>.
+     * @throws HelperBotFileException If file is corrupted.
+     * @throws FileNotFoundException if filePath is not valid.
+     */
     public ArrayList<Task> load() throws HelperBotFileException, FileNotFoundException {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(this.filePath);
@@ -29,6 +38,11 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Write all the <code>Task</code> to the file.
+     * @param tasks An <code>ArrayList<\Task\></code>.
+     * @throws IOException If error occurs when writing the file.
+     */
     public void write(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(this.filePath);
         fw.write(tasks.toStrInFile());

@@ -8,6 +8,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represent a <code>Deadline</code> task.
+ */
 public class Deadline extends Task {
 
     private final LocalDate byDate;
@@ -19,6 +22,12 @@ public class Deadline extends Task {
         this.byTime = byTime;
     }
 
+    /**
+     * Generate a <code>Deadline</code> from user's input.
+     * @param message Input from user.
+     * @return <code>Deadline</code>.
+     * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
+     */
     public static Deadline fromInput(String message) throws HelperBotArgumentException {
         int byIndex = message.indexOf("/by ");
         if (byIndex == -1) {
@@ -40,6 +49,12 @@ public class Deadline extends Task {
         }
     }
 
+    /**
+     * Generate a <code>Deadline</code> from file input.
+     * @param message An array of <code>String</code>.
+     * @return <code>Deadline</code>.
+     * @throws HelperBotFileException If the file is corrupted.
+     */
     public static Deadline of(String[] message) throws HelperBotFileException {
         try {
             return getDeadline(message);
@@ -65,12 +80,21 @@ public class Deadline extends Task {
         return deadline;
     }
 
+    /**
+     * Generate a string representation of <code>Deadline</code>.
+     * @return A string representation of <code>Deadline</code>.
+     */
     public String toStrInFile() {
         return String.join(",", new String[]{"D", super.toStrInFile(),
                 this.byDate.toString(), this.byTime == null ? "" : this.byTime.toString()
         });
     }
 
+    /**
+     * Check if the <code>Deadline</code> due on the specified date.
+     * @param date The date that <code>Deadline</code> will due.
+     * @return true if <code>Deadline</code> due on <code>date</code>.
+     */
     @Override
     public boolean isSameDate(LocalDate date) {
         return this.byDate.equals(date);

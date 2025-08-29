@@ -8,6 +8,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test <code>Ui</code>.
+ */
 class UiTest {
 
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

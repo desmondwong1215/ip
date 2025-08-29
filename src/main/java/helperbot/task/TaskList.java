@@ -3,6 +3,9 @@ package helperbot.task;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Represent a list of <code>Task</code> in <b>HelperBot</b>.
+ */
 public class TaskList {
 
     private final ArrayList<Task> tasks;
@@ -15,22 +18,44 @@ public class TaskList {
         this.tasks = tasks;
     }
 
+    /**
+     * Add a task to the list.
+     * @param task Task to be added.
+     */
     public void add(Task task) {
         this.tasks.add(task);
     }
 
+    /**
+     * Mark the task with index <code>index</code> to done.
+     * @param index The index of the <code>Task</code>.
+     */
     public void mark(int index) {
         this.tasks.get(index).markAsDone();
     }
 
+    /**
+     * Mark the task with index <code>index</code> to not done.
+     * @param index The index of the <code>Task</code>.
+     */
     public void unmark(int index) {
         this.tasks.get(index).markAsNotDone();
     }
 
+    /**
+     * Get the <code>Task</code> with index <code>Index</code>.
+     * @param index The index of the <code>Task</code>.
+     * @return <code>Task</code>.
+     */
     public Task get(int index) {
         return this.tasks.get(index);
     }
 
+    /**
+     * Generate a <code>TaskList</code> where all the <code>Task</code> due on the specific date.
+     * @param date The date that <code>Task</code> will due.
+     * @return <code>TaskList</code>.
+     */
     public TaskList getTaskOnDate(LocalDate date) {
         TaskList tasks = new TaskList();
         for (Task task: this.tasks) {
@@ -41,14 +66,27 @@ public class TaskList {
         return tasks;
     }
 
+    /**
+     * Remove the <code>Task</code> with index <code>Index</code>.
+     * @param index The index of the <code>Task</code>.
+     * @return <code>Task</code>.
+     */
     public Task remove(int index) {
         return this.tasks.remove(index);
     }
 
+    /**
+     * Get the number of <code>Task</code> in <code>TaskList</code>.
+     * @return the size of <code>TaskList</code>.
+     */
     public int size() {
         return this.tasks.size();
     }
 
+    /**
+     * Generate the string representation of the <code>TaskList</code>.
+     * @return The string representation of the <code>TaskList</code>.
+     */
     public String toStrInFile() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Task task: this.tasks) {

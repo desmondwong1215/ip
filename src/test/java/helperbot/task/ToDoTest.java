@@ -5,6 +5,9 @@ import helperbot.exception.HelperBotFileException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test <code>ToDo</code>.
+ */
 class ToDoTest {
 
     @Test

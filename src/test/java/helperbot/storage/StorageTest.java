@@ -8,6 +8,9 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+/**
+ * Simplified version of <code>Storage</code>.
+ */
 class StorageStub {
 
     private final String filePath;
@@ -29,6 +32,9 @@ class StorageStub {
     }
 }
 
+/**
+ * Test <code>Storage</code>.
+ */
 public class StorageTest {
 
     @Test
