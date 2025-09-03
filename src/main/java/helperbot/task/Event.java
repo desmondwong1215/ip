@@ -18,6 +18,14 @@ public class Event extends Task {
     private final LocalDate toDate;
     private final LocalTime toTime;
 
+    /**
+     * Generate a <code>Event</code>
+     * @param description the name of the task.
+     * @param fromDate the start date of the event.
+     * @param fromTime the start time of the event.
+     * @param toDate the end date of the event.
+     * @param toTime the end time of the event.
+     */
     public Event(String description, LocalDate fromDate, LocalTime fromTime, LocalDate toDate, LocalTime toTime) {
         super(description);
         this.fromDate = fromDate;
@@ -36,8 +44,8 @@ public class Event extends Task {
         int fromIndex = message.indexOf("/from ");
         int toIndex = message.indexOf("/to ");
         if (fromIndex == -1 || toIndex == -1) {
-            throw new HelperBotArgumentException("Please enter start date and end data after " +
-                    "/from and /to respectively");
+            throw new HelperBotArgumentException("Please enter start date and end data after "
+                    + "/from and /to respectively");
         } else if (fromIndex > toIndex) {
             throw new HelperBotArgumentException("Please enter /from before entering /to");
         }
@@ -81,7 +89,7 @@ public class Event extends Task {
      * @return A string representation of <code>Event</code>.
      */
     public String toStrInFile() {
-        return String.join(",", new String[]{"E", super.toStrInFile(), 
+        return String.join(",", new String[]{"E", super.toStrInFile(),
                 this.fromDate.toString(), this.fromTime == null ? "" : this.fromTime.toString(),
                 this.toDate.toString(), this.toTime == null ? "" : this.toTime.toString()
         });

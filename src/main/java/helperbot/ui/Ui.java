@@ -67,7 +67,7 @@ public class Ui {
      */
     public void showDelete(Task task, int size, int index) {
         this.print("Nice! I have removed HelperBot task "
-                + (index  + 1)
+                + (index + 1)
                 + "!\n\t"
                 + task
                 + "\nYou now have "
@@ -85,7 +85,7 @@ public class Ui {
             printEmptyTaskList(isMatched);
             return;
         }
-        this.print("Here are the "  + (isMatched ? "matching " : "") + "tasks in your list:" + taskList);
+        this.print("Here are the " + (isMatched ? "matching " : "") + "tasks in your list:" + taskList);
     }
 
     /**

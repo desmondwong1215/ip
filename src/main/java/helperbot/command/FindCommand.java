@@ -11,6 +11,10 @@ public class FindCommand extends Command {
 
     private final String message;
 
+    /**
+     * Generate a <code>FindCommand</code>
+     * @param message the input from user.
+     */
     public FindCommand(String message) {
         this.message = message;
     }
