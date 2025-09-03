@@ -11,7 +11,7 @@ import helperbot.storage.Storage;
 import helperbot.task.TaskList;
 
 /**
- * Represent <b>HelperBot</b>
+ * Represents <b>HelperBot</b>.
  */
 public class HelperBot {
 
@@ -36,7 +36,7 @@ public class HelperBot {
     }
 
     /**
-     * Initialize the chat.
+     * Initializes the chat.
      */
     public void chat() {
         // greet the user

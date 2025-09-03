@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import helperbot.exception.HelperBotFileException;
 
 /**
- * Represent a task in <b>HelperBot</b>.
+ * Represents a task in <b>HelperBot</b>.
  */
 public class Task {
     private final String description;
@@ -17,7 +17,7 @@ public class Task {
     }
 
     /**
-     * Generate a <code>Task</code> according to the user's input.
+     * Generates a <code>Task</code> according to the user's input.
      * @param message The input from user.
      * @return <code>Task</code>
      * @throws HelperBotFileException If the file is corrupted
@@ -35,7 +35,7 @@ public class Task {
     }
 
     /**
-     * Get the icon for the status of the <code>Task</code>.
+     * Gets the icon for the status of the <code>Task</code>.
      * @return 'X' if the <code>Task</code> is done, else ' '.
      */
     public String getStatusIcon() {
@@ -43,21 +43,21 @@ public class Task {
     }
 
     /**
-     * Mark the <code>Task</code>.
+     * Marks the <code>Task</code>.
      */
     public void markAsDone() {
         this.isDone = true;
     }
 
     /**
-     * Unmark the <code>Task</code>.
+     * Unmarks the <code>Task</code>.
      */
     public void markAsNotDone() {
         this.isDone = false;
     }
 
     /**
-     * Generate the string representation of the <code>Task</code>.
+     * Generates the string representation of the <code>Task</code>.
      * @return The string representation of the <code>Task</code>.
      */
     public String toStrInFile() {
@@ -65,7 +65,7 @@ public class Task {
     }
 
     /**
-     * Check if the <code>task</code> due on the specific date.
+     * Checks if the <code>task</code> due on the specific date.
      * @param date The date that the <code>Task</code> will due.
      * @return false
      */
@@ -74,7 +74,7 @@ public class Task {
     }
 
     /**
-     * Check if the <code>Task</code>'s description contain following keyword.
+     * Checks if the <code>Task</code>'s description contain following keyword.
      * @param description The keyword to be matched.
      * @return true if matched.
      */

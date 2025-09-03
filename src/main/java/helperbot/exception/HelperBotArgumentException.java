@@ -1,7 +1,7 @@
 package helperbot.exception;
 
 /**
- * Represent an exception that handles all the invalid input from user.
+ * Represents an exception that handles all the invalid input from user.
  */
 public class HelperBotArgumentException extends Exception {
 

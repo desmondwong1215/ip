@@ -4,7 +4,7 @@ import helperbot.exception.HelperBotArgumentException;
 import helperbot.exception.HelperBotFileException;
 
 /**
- * Represent a <code>ToDo</code> task.
+ * Represents a <code>ToDo</code> task.
  */
 public class ToDo extends Task {
 
@@ -13,7 +13,7 @@ public class ToDo extends Task {
     }
 
     /**
-     * Generate a <code>ToDo</code> from user's input.
+     * Generates a <code>ToDo</code> from user's input.
      * @param message Input from user.
      * @return <code>ToDo</code>.
      * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
@@ -31,7 +31,7 @@ public class ToDo extends Task {
     }
 
     /**
-     * Generate a <code>Event</code> from file input.
+     * Generates a <code>Event</code> from file input.
      * @param message An array of <code>String</code>.
      * @return <code>Event</code>.
      * @throws HelperBotFileException If the file is corrupted.
@@ -51,7 +51,7 @@ public class ToDo extends Task {
     }
 
     /**
-     * Generate a string representation of <code>ToDo</code>.
+     * Generates a string representation of <code>ToDo</code>.
      * @return A string representation of <code>ToDo</code>.
      */
     public String toStrInFile() {

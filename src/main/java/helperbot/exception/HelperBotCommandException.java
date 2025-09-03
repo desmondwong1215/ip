@@ -1,7 +1,7 @@
 package helperbot.exception;
 
 /**
- * Represent an exception that handles all the invalid command from user.
+ * Represents an exception that handles all the invalid command from user.
  * <p>
  * Command is the first word of the input.
  */

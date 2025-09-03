@@ -5,7 +5,7 @@ import helperbot.task.TaskList;
 import helperbot.ui.Ui;
 
 /**
- * Represent a command which show all the <code>Task</code> in the <code>TaskList</code>.
+ * Represents a command which show all the <code>Task</code> in the <code>TaskList</code>.
  */
 public class ListCommand extends Command {
 

@@ -7,7 +7,7 @@ import helperbot.ui.Ui;
 import java.io.IOException;
 
 /**
- * Represent a command which exit from <b>HelperBot</b>.
+ * Represents a command which exit from <b>HelperBot</b>.
  */
 public class ExitCommand extends Command {
 

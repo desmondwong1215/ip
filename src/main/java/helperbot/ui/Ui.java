@@ -3,7 +3,7 @@ package helperbot.ui;
 import helperbot.task.Task;
 
 /**
- * Represent the interface of <b>HelperBot</b>.
+ * Represents the interface of <b>HelperBot</b>.
  */
 public class Ui {
 
@@ -11,7 +11,7 @@ public class Ui {
     private static final String NAME = "HelperBot";
 
     /**
-     * Greet the user.
+     * Greets the user.
      */
     public void greet() {
         this.print("Hello! I'm "
@@ -21,7 +21,7 @@ public class Ui {
     }
 
     /**
-     * Print the information of the marked <code>Task</code>.
+     * Prints the information of the marked <code>Task</code>.
      * @param index The index of the <code>Task</code>.
      * @param task <code>Task</code>.
      */
@@ -30,7 +30,7 @@ public class Ui {
     }
 
     /**
-     * Print the information of the unmarked <code>Task</code>.
+     * Prints the information of the unmarked <code>Task</code>.
      * @param index The index of the <code>Task</code>.
      * @param task <code>Task</code>.
      */
@@ -39,7 +39,7 @@ public class Ui {
     }
 
     /**
-     * Show error message.
+     * Shows error message.
      * @param message Error message.
      */
     public void showError(String message) {
@@ -47,7 +47,7 @@ public class Ui {
     }
 
     /**
-     * Show the outcome of addition
+     * Shows the outcome of addition
      * @param task <code>Task</code> added.
      * @param size The size of <code>TaskList</code> after addition.
      */
@@ -60,7 +60,7 @@ public class Ui {
     }
 
     /**
-     * Show the outcome of deletion
+     * Shows the outcome of deletion
      * @param task <code>Task</code> deleted.
      * @param size The size of <code>TaskList</code> after deletion.
      * @param index The index of <code>Task</code>.
@@ -76,7 +76,7 @@ public class Ui {
     }
 
     /**
-     * Print <code>TaskList</code>.
+     * Prints <code>TaskList</code>.
      * @param isMatched <code>true</code> if HelperBot is matching <code>Task</code>.
      * @param taskList String representation of <code>TaskList</code>.
      */
@@ -89,7 +89,7 @@ public class Ui {
     }
 
     /**
-     * Exit the program.
+     * Exits the program.
      */
     public void exit() {
         this.print("Bye. Hope to see you again soon!");

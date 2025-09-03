@@ -9,7 +9,7 @@ import helperbot.exception.HelperBotArgumentException;
 import helperbot.exception.HelperBotFileException;
 
 /**
- * Represent a <code>Event</code> task.
+ * Represents a <code>Event</code> task.
  */
 public class Event extends Task {
 
@@ -27,7 +27,7 @@ public class Event extends Task {
     }
 
     /**
-     * Generate a <code>Event</code> from user's input.
+     * Generates a <code>Event</code> from user's input.
      * @param message Input from user.
      * @return <code>Event</code>.
      * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
@@ -61,7 +61,7 @@ public class Event extends Task {
     }
 
     /**
-     * Generate a <code>Event</code> from file input.
+     * Generates a <code>Event</code> from file input.
      * @param message An array of <code>String</code>.
      * @return <code>Event</code>.
      * @throws HelperBotFileException If the file is corrupted.
@@ -77,7 +77,7 @@ public class Event extends Task {
     }
 
     /**
-     * Generate a string representation of <code>Event</code>.
+     * Generates a string representation of <code>Event</code>.
      * @return A string representation of <code>Event</code>.
      */
     public String toStrInFile() {
@@ -88,7 +88,7 @@ public class Event extends Task {
     }
 
     /**
-     * Check if the <code>Event</code> due on the specified date.
+     * Checks if the <code>Event</code> due on the specified date.
      * @param date The date that <code>Event</code> will due.
      * @return true if <code>Event</code> due on <code>date</code>.
      */

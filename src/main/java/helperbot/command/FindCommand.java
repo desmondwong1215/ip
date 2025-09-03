@@ -5,7 +5,7 @@ import helperbot.task.TaskList;
 import helperbot.ui.Ui;
 
 /**
- * Represent a command that find any <code>Task</code> whose description contains specific keyword.
+ * Represents a command that find any <code>Task</code> whose description contains specific keyword.
  */
 public class FindCommand extends Command {
 

@@ -12,7 +12,7 @@ import helperbot.task.Task;
 import helperbot.task.TaskList;
 
 /**
- * Represent a class that is responsible for loading and writing all the <code>Task</code> from and to a specific file.
+ * Represents a class that is responsible for loading and writing all the <code>Task</code> from and to a specific file.
  */
 public class Storage {
 
@@ -23,7 +23,7 @@ public class Storage {
     }
 
     /**
-     * Load all the <code>Task</code> from the file.
+     * Loads all the <code>Task</code> from the file.
      * @return An <code>ArrayList<\Task\></code>.
      * @throws HelperBotFileException If file is corrupted.
      * @throws FileNotFoundException if filePath is not valid.
@@ -39,7 +39,7 @@ public class Storage {
     }
 
     /**
-     * Write all the <code>Task</code> to the file.
+     * Writes all the <code>Task</code> to the file.
      * @param tasks An <code>ArrayList<\Task\></code>.
      * @throws IOException If error occurs when writing the file.
      */

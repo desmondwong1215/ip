@@ -12,7 +12,7 @@ import helperbot.command.MarkCommand;
 import helperbot.exception.HelperBotCommandException;
 
 /**
- * Represent a class that parse all the command from user's input to corresponding <code>Command</code>.
+ * Represents a class that parse all the command from user's input to corresponding <code>Command</code>.
  */
 public class Parser {
 

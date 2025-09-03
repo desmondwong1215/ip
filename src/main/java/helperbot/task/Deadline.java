@@ -9,7 +9,7 @@ import helperbot.exception.HelperBotArgumentException;
 import helperbot.exception.HelperBotFileException;
 
 /**
- * Represent a <code>Deadline</code> task.
+ * Represents a <code>Deadline</code> task.
  */
 public class Deadline extends Task {
 
@@ -23,7 +23,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Generate a <code>Deadline</code> from user's input.
+     * Generates a <code>Deadline</code> from user's input.
      * @param message Input from user.
      * @return <code>Deadline</code>.
      * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
@@ -50,7 +50,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Generate a <code>Deadline</code> from file input.
+     * Generates a <code>Deadline</code> from file input.
      * @param message An array of <code>String</code>.
      * @return <code>Deadline</code>.
      * @throws HelperBotFileException If the file is corrupted.
@@ -66,7 +66,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Generate a string representation of <code>Deadline</code>.
+     * Generates a string representation of <code>Deadline</code>.
      * @return A string representation of <code>Deadline</code>.
      */
     public String toStrInFile() {
@@ -76,7 +76,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Check if the <code>Deadline</code> due on the specified date.
+     * Checks if the <code>Deadline</code> due on the specified date.
      * @param date The date that <code>Deadline</code> will due.
      * @return true if <code>Deadline</code> due on <code>date</code>.
      */

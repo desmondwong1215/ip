@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Represent a list of <code>Task</code> in <b>HelperBot</b>.
+ * Represents a list of <code>Task</code> in <b>HelperBot</b>.
  */
 public class TaskList {
 
@@ -19,7 +19,7 @@ public class TaskList {
     }
 
     /**
-     * Add a task to the list.
+     * Adds a task to the list.
      * @param task Task to be added.
      */
     public void add(Task task) {
@@ -27,7 +27,7 @@ public class TaskList {
     }
 
     /**
-     * Mark the task with index <code>index</code> to done.
+     * Marks the task with index <code>index</code> to done.
      * @param index The index of the <code>Task</code>.
      */
     public void mark(int index) {
@@ -35,7 +35,7 @@ public class TaskList {
     }
 
     /**
-     * Mark the task with index <code>index</code> to not done.
+     * Marks the task with index <code>index</code> to not done.
      * @param index The index of the <code>Task</code>.
      */
     public void unmark(int index) {
@@ -43,7 +43,7 @@ public class TaskList {
     }
 
     /**
-     * Get the <code>Task</code> with index <code>Index</code>.
+     * Gets the <code>Task</code> with index <code>Index</code>.
      * @param index The index of the <code>Task</code>.
      * @return <code>Task</code>.
      */
@@ -52,7 +52,7 @@ public class TaskList {
     }
 
     /**
-     * Generate a <code>TaskList</code> where all the <code>Task</code> due on the specific date.
+     * Generates a <code>TaskList</code> where all the <code>Task</code> due on the specific date.
      * @param date The date that <code>Task</code> will due.
      * @return <code>TaskList</code>.
      */
@@ -67,7 +67,7 @@ public class TaskList {
     }
 
     /**
-     * Generate <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
+     * Generates <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
      * @param description The keyword to be matched.
      * @return <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
      */
@@ -82,7 +82,7 @@ public class TaskList {
     }
 
     /**
-     * Remove the <code>Task</code> with index <code>Index</code>.
+     * Removes the <code>Task</code> with index <code>Index</code>.
      * @param index The index of the <code>Task</code>.
      * @return <code>Task</code>.
      */
@@ -91,7 +91,7 @@ public class TaskList {
     }
 
     /**
-     * Get the number of <code>Task</code> in <code>TaskList</code>.
+     * Gets the number of <code>Task</code> in <code>TaskList</code>.
      * @return the size of <code>TaskList</code>.
      */
     public int size() {
@@ -99,7 +99,7 @@ public class TaskList {
     }
 
     /**
-     * Generate the string representation of the <code>TaskList</code>.
+     * Generates the string representation of the <code>TaskList</code>.
      * @return The string representation of the <code>TaskList</code>.
      */
     public String toStrInFile() {
