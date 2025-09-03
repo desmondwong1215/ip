@@ -23,14 +23,14 @@ public class CheckCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Storage storage, Ui ui) {
+    public String execute(TaskList tasks, Storage storage, Ui ui) {
         try {
             LocalDate date = LocalDate.parse(this.message[1]);
-            ui.printTaskList(true, tasks.getTaskOnDate(date).toString());
+            return ui.printTaskList(true, tasks.getTaskOnDate(date).toString());
         } catch (DateTimeParseException e) {
-            ui.showError("Invalid Argument: Please enter the date in YYYY-MM-DD.");
+            return ui.showError("Invalid Argument: Please enter the date in YYYY-MM-DD.");
         } catch (IndexOutOfBoundsException e) {
-            ui.showError("Invalid Argument: Date is missing.");
+            return ui.showError("Invalid Argument: Date is missing.");
         }
     }
 }
