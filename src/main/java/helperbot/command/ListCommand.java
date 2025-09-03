@@ -10,7 +10,7 @@ import helperbot.ui.Ui;
 public class ListCommand extends Command {
 
     @Override
-    public void execute(TaskList tasks, Storage storage, Ui ui) {
-        ui.printTaskList(false, tasks.toString());
+    public String execute(TaskList tasks, Storage storage, Ui ui) {
+        return ui.printTaskList(false, tasks.toString());
     }
 }

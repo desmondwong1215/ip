@@ -15,8 +15,9 @@ public abstract class Command {
      * @param tasks A list of tasks in HelperBot.
      * @param storage Storage of HelperBot.
      * @param ui Interface of HelperBot.
+     * @return The output from HelperBot.
      */
-    public abstract void execute(TaskList tasks, Storage storage, Ui ui);
+    public abstract String execute(TaskList tasks, Storage storage, Ui ui);
 
     /**
      * Checks if the command is an <code>ExitCommand</code>.

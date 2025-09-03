@@ -20,11 +20,11 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Storage storage, Ui ui) {
+    public String execute(TaskList tasks, Storage storage, Ui ui) {
         try {
-            ui.printTaskList(true, tasks.match(this.message.substring(5)).toString());
+            return ui.printTaskList(true, tasks.match(this.message.substring(5)).toString());
         } catch (IndexOutOfBoundsException e) {
-            ui.showError("Invalid Argument: String to be matched is missing.");
+            return ui.showError("Invalid Argument: String to be matched is missing.");
         }
     }
 }

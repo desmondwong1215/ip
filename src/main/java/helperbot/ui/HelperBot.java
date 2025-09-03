@@ -63,6 +63,28 @@ public class HelperBot {
                 this.ui.showError(e.toString());
             }
         }
+
+        scanner.close();
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parse(input);
+            return command.execute(this.tasks, this.storage, this.ui);
+        } catch (HelperBotCommandException e) {
+            // catch an invalid HelperBot.command
+            return this.ui.showError(e.toString());
+        }
+    }
+
+    /**
+     * Greet the user
+     */
+    public String greet() {
+        return this.ui.greet();
     }
 
     public static void main(String[] args) {
