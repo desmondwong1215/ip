@@ -21,6 +21,11 @@ public class AddCommand extends Command {
     private final String command;
     private final String message;
 
+    /**
+     * Generate a <code>AddCommand</code>
+     * @param command the type of the task
+     * @param message the input from user
+     */
     public AddCommand(String command, String message) {
         this.command = command;
         this.message = message;

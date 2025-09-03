@@ -16,6 +16,12 @@ public class Deadline extends Task {
     private final LocalDate byDate;
     private final LocalTime byTime;
 
+    /**
+     * Generate a <code>Deadline</code>
+     * @param description the name of the <code>Task</code>
+     * @param byDate the date of the deadline
+     * @param byTime the time of the deadline
+     */
     public Deadline(String description, LocalDate byDate, LocalTime byTime) {
         super(description);
         this.byDate = byDate;

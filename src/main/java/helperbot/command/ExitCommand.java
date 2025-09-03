@@ -1,10 +1,10 @@
 package helperbot.command;
 
+import java.io.IOException;
+
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
 import helperbot.ui.Ui;
-
-import java.io.IOException;
 
 /**
  * Represents a command which exit from <b>HelperBot</b>.

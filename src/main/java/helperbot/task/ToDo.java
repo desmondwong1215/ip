@@ -8,6 +8,10 @@ import helperbot.exception.HelperBotFileException;
  */
 public class ToDo extends Task {
 
+    /**
+     * Generate a <code>ToDo</code>
+     * @param description the name of the task.
+     */
     public ToDo(String description) {
         super(description);
     }

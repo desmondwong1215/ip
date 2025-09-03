@@ -1,11 +1,11 @@
 package helperbot.command;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
 import helperbot.ui.Ui;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 /**
  * Represents a command that find all the <code>Task</code> which due on the date specified (if applicable).
@@ -14,6 +14,10 @@ public class CheckCommand extends Command {
 
     private final String[] message;
 
+    /**
+     * Generate a <code>CheckCommand</code>
+     * @param message the input from user
+     */
     public CheckCommand(String[] message) {
         this.message = message;
     }

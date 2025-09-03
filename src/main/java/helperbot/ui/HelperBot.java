@@ -19,6 +19,10 @@ public class HelperBot {
     private final Ui ui;
     private final Storage storage;
 
+    /**
+     * Generate the <b>HelperBot</b>
+     * @param filePath the file path to the storage file
+     */
     public HelperBot(String filePath) {
         TaskList tasks1;
         this.ui = new Ui();
@@ -46,7 +50,7 @@ public class HelperBot {
 
         // chat with the user, exit when user enter 'bye'
         while (true) {
-             try {
+            try {
                 System.out.println();
                 String message = scanner.nextLine();
                 Command command = Parser.parse(message);
@@ -55,8 +59,8 @@ public class HelperBot {
                     break;
                 }
             } catch (HelperBotCommandException e) {
-                 // catch an invalid HelperBot.command
-                 this.ui.showError(e.toString());
+                // catch an invalid HelperBot.command
+                this.ui.showError(e.toString());
             }
         }
     }
