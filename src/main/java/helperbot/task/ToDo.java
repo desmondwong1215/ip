@@ -9,7 +9,7 @@ import helperbot.exception.HelperBotFileException;
 public class ToDo extends Task {
 
     /**
-     * Generate a <code>ToDo</code>
+     * Generates a <code>ToDo</code>
      * @param description the name of the task.
      */
     public ToDo(String description) {
@@ -22,7 +22,7 @@ public class ToDo extends Task {
      * @return <code>ToDo</code>.
      * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
      */
-    public static ToDo fromInput(String message) throws HelperBotArgumentException {
+    public static ToDo fromUserInput(String message) throws HelperBotArgumentException {
         try {
             String detail = message.substring(5).trim();
             if (detail.isEmpty()) {
@@ -58,8 +58,8 @@ public class ToDo extends Task {
      * Generates a string representation of <code>ToDo</code>.
      * @return A string representation of <code>ToDo</code>.
      */
-    public String toStrInFile() {
-        return String.join(",", new String[]{"T", super.toStrInFile()});
+    public String toSavaFormat() {
+        return String.join(",", new String[]{"T", super.toSavaFormat()});
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Deadline extends Task {
     private final LocalTime byTime;
 
     /**
-     * Generate a <code>Deadline</code>
+     * Generates a <code>Deadline</code>
      * @param description the name of the <code>Task</code>
      * @param byDate the date of the deadline
      * @param byTime the time of the deadline
@@ -34,7 +34,7 @@ public class Deadline extends Task {
      * @return <code>Deadline</code>.
      * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
      */
-    public static Deadline fromInput(String message) throws HelperBotArgumentException {
+    public static Deadline fromUserInput(String message) throws HelperBotArgumentException {
         int byIndex = message.indexOf("/by ");
         if (byIndex == -1) {
             throw new HelperBotArgumentException("Please enter the deadline after /by");
@@ -75,8 +75,8 @@ public class Deadline extends Task {
      * Generates a string representation of <code>Deadline</code>.
      * @return A string representation of <code>Deadline</code>.
      */
-    public String toStrInFile() {
-        return String.join(",", new String[]{"D", super.toStrInFile(),
+    public String toSavaFormat() {
+        return String.join(",", new String[]{"D", super.toSavaFormat(),
                 this.byDate.toString(), this.byTime == null ? "" : this.byTime.toString()
         });
     }

@@ -49,7 +49,7 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Get <code>DialogBox</code> for user.
+     * Gets <code>DialogBox</code> for user.
      * @param text The message to be displayed
      * @param img The image of user.
      * @return <code>DialogBox</code>
@@ -59,7 +59,7 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Get <code>DialogBox</code> for <b>HelperBot</b>.
+     * Gets <code>DialogBox</code> for <b>HelperBot</b>.
      * @param text The message to be displayed
      * @param img The image of HelperBot.
      * @return <code>DialogBox</code>

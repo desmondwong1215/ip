@@ -22,9 +22,9 @@ public class AddCommand extends Command {
     private final String message;
 
     /**
-     * Generate a <code>AddCommand</code>
-     * @param command the type of the task
-     * @param message the input from user
+     * Generate a <code>AddCommand</code>.
+     * @param command The type of the task.
+     * @param message The input from user.
      */
     public AddCommand(String command, String message) {
         this.command = command;
@@ -35,16 +35,16 @@ public class AddCommand extends Command {
     public String execute(TaskList tasks, Storage storage, Ui ui) {
         try {
             Task task = switch (this.command) {
-            case "todo" -> ToDo.fromInput(this.message);
-            case "deadline" -> Deadline.fromInput(this.message);
+            case "todo" -> ToDo.fromUserInput(this.message);
+            case "deadline" -> Deadline.fromUserInput(this.message);
             // HelperBot Command is Event
-            default -> Event.fromInput(this.message);
+            default -> Event.fromUserInput(this.message);
             };
             tasks.add(task);
-            return ui.showAdd(task, tasks.size());
+            return ui.showOutputOfAddCommand(task, tasks.size());
         } catch (HelperBotArgumentException e) {
             // /by is not entered correctly
-            return ui.showError(e.toString());
+            return ui.showErrorMessage(e.toString());
         }
     }
 }

@@ -17,7 +17,7 @@ import helperbot.exception.HelperBotCommandException;
 public class Parser {
 
     /**
-     * Parse the input from user to a <code>Command</code>.
+     * Parses the input from user to a <code>Command</code>.
      * @param message The input from user.
      * @return A <code>Command</code> containing the message.
      * @throws HelperBotCommandException The first word of the input is not a valid command.

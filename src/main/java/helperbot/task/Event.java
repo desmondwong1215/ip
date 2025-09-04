@@ -20,11 +20,11 @@ public class Event extends Task {
 
     /**
      * Generate a <code>Event</code>
-     * @param description the name of the task.
-     * @param fromDate the start date of the event.
-     * @param fromTime the start time of the event.
-     * @param toDate the end date of the event.
-     * @param toTime the end time of the event.
+     * @param description The name of the task.
+     * @param fromDate The start date of the event.
+     * @param fromTime The start time of the event.
+     * @param toDate The end date of the event.
+     * @param toTime The end time of the event.
      */
     public Event(String description, LocalDate fromDate, LocalTime fromTime, LocalDate toDate, LocalTime toTime) {
         super(description);
@@ -40,7 +40,7 @@ public class Event extends Task {
      * @return <code>Event</code>.
      * @throws HelperBotArgumentException If HelperBot cannot recognise the argument provided.
      */
-    public static Event fromInput(String message) throws HelperBotArgumentException {
+    public static Event fromUserInput(String message) throws HelperBotArgumentException {
         int fromIndex = message.indexOf("/from ");
         int toIndex = message.indexOf("/to ");
         if (fromIndex == -1 || toIndex == -1) {
@@ -88,8 +88,8 @@ public class Event extends Task {
      * Generates a string representation of <code>Event</code>.
      * @return A string representation of <code>Event</code>.
      */
-    public String toStrInFile() {
-        return String.join(",", new String[]{"E", super.toStrInFile(),
+    public String toSavaFormat() {
+        return String.join(",", new String[]{"E", super.toSavaFormat(),
                 this.fromDate.toString(), this.fromTime == null ? "" : this.fromTime.toString(),
                 this.toDate.toString(), this.toTime == null ? "" : this.toTime.toString()
         });

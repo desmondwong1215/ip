@@ -5,23 +5,23 @@ import helperbot.task.TaskList;
 import helperbot.ui.Ui;
 
 /**
- * Represent a command that change the status of a <code>Task</code>.
+ * Represents a command that change the status of a <code>Task</code>.
  * <p>
  * A <code>Task</code> can be marked as <i>Done</i> and <i>Not Done</i>.
  */
 public class MarkCommand extends Command {
 
-    private final String[] message;
-    private final boolean mark;
+    private final String[] splitMessages;
+    private final boolean isMarked;
 
     /**
-     * Generate a <code>MarkCommand</code>
+     * Generates a <code>MarkCommand</code>
      * @param message the input from user.
-     * @param mark true if the <code>Task</code> is done, else false.
+     * @param isMarked true if the <code>Task</code> is done, else false.
      */
-    public MarkCommand(String[] message, boolean mark) {
-        this.message = message;
-        this.mark = mark;
+    public MarkCommand(String[] message, boolean isMarked) {
+        this.splitMessages = message;
+        this.isMarked = isMarked;
     }
 
     @Override
@@ -29,28 +29,28 @@ public class MarkCommand extends Command {
         int index = 0;
 
         try {
-            index = Integer.parseInt(this.message[1]) - 1;
-            if (this.mark) {
-                // mark the helperbot.task as done
+            index = Integer.parseInt(this.splitMessages[1]) - 1;
+            if (this.isMarked) {
+                // mark the HelperBot task as done
                 tasks.mark(index);
-                return ui.showMarked(index, tasks.get(index));
+                return ui.showOutputOfMarkCommand(index, tasks.get(index));
             } else {
-                // mark the helperbot.task as not done
+                // mark the HelperBot task as not done
                 tasks.unmark(index);
-                return ui.showUnmarked(index, tasks.get(index));
+                return ui.showOutputOfUnmarkCommand(index, tasks.get(index));
             }
         } catch (IndexOutOfBoundsException e) {
-            if (this.message.length == 1) {
+            if (this.splitMessages.length == 1) {
                 // the message length < 2, index is not provided
-                return ui.showError("Invalid Argument: Please enter the index of the HelperBot task after "
-                        + this.message[0] + ".");
+                return ui.showErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
+                        + this.splitMessages[0] + ".");
             } else {
-                // index >= tasks.size(), helperbot.task is not found
-                return ui.showError("Invalid Argument: Task " + (index + 1) + " is not found.");
+                // index >= tasks.size(), HelperBot task is not found
+                return ui.showErrorMessage("Invalid Argument: Task " + (index + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
             // the second input cannot be parsed as an integer
-            return ui.showError("Invalid Argument: " + this.message[1] + " cannot be parsed as an integer.");
+            return ui.showErrorMessage("Invalid Argument: " + this.splitMessages[1] + " cannot be parsed as an integer.");
         }
     }
 }

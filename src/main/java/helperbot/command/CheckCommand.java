@@ -12,25 +12,25 @@ import helperbot.ui.Ui;
  */
 public class CheckCommand extends Command {
 
-    private final String[] message;
+    private final String[] splitMessages;
 
     /**
      * Generate a <code>CheckCommand</code>
      * @param message the input from user
      */
     public CheckCommand(String[] message) {
-        this.message = message;
+        this.splitMessages = message;
     }
 
     @Override
     public String execute(TaskList tasks, Storage storage, Ui ui) {
         try {
-            LocalDate date = LocalDate.parse(this.message[1]);
+            LocalDate date = LocalDate.parse(this.splitMessages[1]);
             return ui.printTaskList(true, tasks.getTaskOnDate(date).toString());
         } catch (DateTimeParseException e) {
-            return ui.showError("Invalid Argument: Please enter the date in YYYY-MM-DD.");
+            return ui.showErrorMessage("Invalid Argument: Please enter the date in YYYY-MM-DD.");
         } catch (IndexOutOfBoundsException e) {
-            return ui.showError("Invalid Argument: Date is missing.");
+            return ui.showErrorMessage("Invalid Argument: Date is missing.");
         }
     }
 }

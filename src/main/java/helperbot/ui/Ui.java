@@ -27,7 +27,7 @@ public class Ui {
      * @param task <code>Task</code>.
      * @return The message.
      */
-    public String showMarked(int index, Task task) {
+    public String showOutputOfMarkCommand(int index, Task task) {
         return this.print("Nice! I have marked HelperBot task " + (index + 1) + " as done!\n\t" + task);
     }
 
@@ -37,7 +37,7 @@ public class Ui {
      * @param task <code>Task</code>.
      * @return The message.
      */
-    public String showUnmarked(int index, Task task) {
+    public String showOutputOfUnmarkCommand(int index, Task task) {
         return this.print("Nice! I have marked HelperBot task " + (index + 1) + " as not done yet!\n\t" + task);
     }
 
@@ -46,7 +46,7 @@ public class Ui {
      * @param message Error message.
      * @return The message.
      */
-    public String showError(String message) {
+    public String showErrorMessage(String message) {
         return this.print("Error!\n" + message);
     }
 
@@ -56,7 +56,7 @@ public class Ui {
      * @param size The size of <code>TaskList</code> after addition.
      * @return The message.
      */
-    public String showAdd(Task task, int size) {
+    public String showOutputOfAddCommand(Task task, int size) {
         return this.print("Got it. I've added this HelperBot task:\n\t"
                 + task
                 + "\nYou now have "
@@ -71,7 +71,7 @@ public class Ui {
      * @param index The index of <code>Task</code>.
      * @return The message.
      */
-    public String showDelete(Task task, int size, int index) {
+    public String showOutputOfDeleteCommand(Task task, int size, int index) {
         return this.print("Nice! I have removed HelperBot task "
                 + (index + 1)
                 + "!\n\t"
@@ -97,7 +97,7 @@ public class Ui {
      * Exits the program.
      * @return The message.
      */
-    public String exit() {
+    public String showExitMessage() {
         return this.print("Bye. Hope to see you again soon!");
     }
 
@@ -106,7 +106,7 @@ public class Ui {
      * @param message Error message.
      * @return The message.
      */
-    public String exitWithError(String message) {
+    public String showExitErrorMessage(String message) {
         return this.print(message + "\nBye. Hope to see you again soon!");
     }
 
@@ -121,7 +121,7 @@ public class Ui {
     }
 
     /**
-     * Print and return the message
+     * Prints and returns the message
      * @param message Output to the user.
      * @return The message.
      */

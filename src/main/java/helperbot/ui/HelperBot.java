@@ -20,7 +20,7 @@ public class HelperBot {
     private final Storage storage;
 
     /**
-     * Generate the <b>HelperBot</b>
+     * Generates the <b>HelperBot</b>
      * @param filePath the file path to the storage file
      */
     public HelperBot(String filePath) {
@@ -30,10 +30,10 @@ public class HelperBot {
         try {
             tasks1 = new TaskList(this.storage.load());
         } catch (FileNotFoundException e) {
-            this.ui.showError(filePath + " is not found.");
+            this.ui.showErrorMessage(filePath + " is not found.");
             tasks1 = new TaskList();
         } catch (HelperBotFileException e) {
-            this.ui.showError(e.toString());
+            this.ui.showErrorMessage(e.toString());
             tasks1 = new TaskList();
         }
         this.tasks = tasks1;
@@ -60,7 +60,7 @@ public class HelperBot {
                 }
             } catch (HelperBotCommandException e) {
                 // catch an invalid HelperBot.command
-                this.ui.showError(e.toString());
+                this.ui.showErrorMessage(e.toString());
             }
         }
 
@@ -76,12 +76,12 @@ public class HelperBot {
             return command.execute(this.tasks, this.storage, this.ui);
         } catch (HelperBotCommandException e) {
             // catch an invalid HelperBot.command
-            return this.ui.showError(e.toString());
+            return this.ui.showErrorMessage(e.toString());
         }
     }
 
     /**
-     * Greet the user
+     * Greets the user
      */
     public String greet() {
         return this.ui.greet();

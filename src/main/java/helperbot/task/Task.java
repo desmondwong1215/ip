@@ -13,7 +13,7 @@ public class Task {
 
     /**
      * Generates a <code>Task</code>.
-     * @param description the description of the task.
+     * @param description The description of the task.
      */
     public Task(String description) {
         this.description = description;
@@ -64,7 +64,7 @@ public class Task {
      * Generates the string representation of the <code>Task</code>.
      * @return The string representation of the <code>Task</code>.
      */
-    public String toStrInFile() {
+    public String toSavaFormat() {
         return String.join(",", new String[]{isDone ? "1" : "0", this.description});
     }
 

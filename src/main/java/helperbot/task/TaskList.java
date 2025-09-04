@@ -105,7 +105,7 @@ public class TaskList {
     public String toStrInFile() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Task task: this.tasks) {
-            stringBuilder.append(task.toStrInFile()).append("\n");
+            stringBuilder.append(task.toSavaFormat()).append("\n");
         }
         return stringBuilder.toString();
     }

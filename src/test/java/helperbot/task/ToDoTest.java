@@ -13,7 +13,7 @@ class ToDoTest {
     @Test
     void fromInput_validInput_success() throws HelperBotArgumentException {
         String input = "todo read a book";
-        ToDo toDo = ToDo.fromInput(input);
+        ToDo toDo = ToDo.fromUserInput(input);
         assertEquals("[T][ ] read a book", toDo.toString());
     }
 
@@ -21,7 +21,7 @@ class ToDoTest {
     void fromInput_emptyDescription_exceptionThrown() {
         String input = "todo   ";
         HelperBotArgumentException thrown = assertThrows(HelperBotArgumentException.class, () -> {
-            ToDo.fromInput(input);
+            ToDo.fromUserInput(input);
         });
         assertEquals("Empty description.", thrown.getMessage());
     }
@@ -61,6 +61,6 @@ class ToDoTest {
     @Test
     void toStrInFile_validTask_correctFormat() {
         ToDo toDo = new ToDo("take out the trash");
-        assertEquals("T,0,take out the trash", toDo.toStrInFile());
+        assertEquals("T,0,take out the trash", toDo.toSavaFormat());
     }
 }

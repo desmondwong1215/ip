@@ -12,7 +12,7 @@ public class FindCommand extends Command {
     private final String message;
 
     /**
-     * Generate a <code>FindCommand</code>
+     * Generates a <code>FindCommand</code>
      * @param message the input from user.
      */
     public FindCommand(String message) {
@@ -24,7 +24,7 @@ public class FindCommand extends Command {
         try {
             return ui.printTaskList(true, tasks.match(this.message.substring(5)).toString());
         } catch (IndexOutOfBoundsException e) {
-            return ui.showError("Invalid Argument: String to be matched is missing.");
+            return ui.showErrorMessage("Invalid Argument: String to be matched is missing.");
         }
     }
 }

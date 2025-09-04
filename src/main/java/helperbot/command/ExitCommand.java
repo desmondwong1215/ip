@@ -15,9 +15,9 @@ public class ExitCommand extends Command {
     public String execute(TaskList tasks, Storage storage, Ui ui) {
         try {
             storage.write(tasks);
-            return ui.exit();
+            return ui.showExitMessage();
         } catch (IOException e) {
-            return ui.exitWithError("Error: Unable to write helperbot.task to the file.\n");
+            return ui.showExitErrorMessage("Error: Unable to write helperbot.task to the file.\n");
         }
     }
 

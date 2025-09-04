@@ -46,7 +46,7 @@ class UiTest {
                 return "[T][X] test task";
             }
         };
-        ui.showMarked(0, mockTask);
+        ui.showOutputOfMarkCommand(0, mockTask);
         String expectedOutput = LINE + "\n"
                 + "Nice! I have marked HelperBot task 1 as done!\n\t[T][X] test task\n"
                 + LINE + "\n";
@@ -61,7 +61,7 @@ class UiTest {
                 return "[T][ ] another test task";
             }
         };
-        ui.showUnmarked(1, mockTask);
+        ui.showOutputOfUnmarkCommand(1, mockTask);
         String expectedOutput = LINE + "\n"
                 + "Nice! I have marked HelperBot task 2 as not done yet!\n\t[T][ ] another test task\n"
                 + LINE + "\n";
@@ -71,7 +71,7 @@ class UiTest {
     @Test
     void showError_validMessage_correctOutput() {
         String errorMessage = "Invalid command entered.";
-        ui.showError(errorMessage);
+        ui.showErrorMessage(errorMessage);
         String expectedOutput = LINE + "\n"
                 + "Error!\n"
                 + errorMessage + "\n"
@@ -81,7 +81,7 @@ class UiTest {
 
     @Test
     void exit_noError_correctOutput() {
-        ui.exit();
+        ui.showExitMessage();
         String expectedOutput = LINE + "\n"
                 + "Bye. Hope to see you again soon!\n"
                 + LINE + "\n";
@@ -91,7 +91,7 @@ class UiTest {
     @Test
     void exitWithError_validMessage_correctOutput() {
         String errorMessage = "File could not be loaded.";
-        ui.exitWithError(errorMessage);
+        ui.showExitErrorMessage(errorMessage);
         String expectedOutput = LINE + "\n"
                 + errorMessage + "\n"
                 + "Bye. Hope to see you again soon!\n"
