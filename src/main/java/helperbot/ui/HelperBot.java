@@ -1,6 +1,7 @@
 package helperbot.ui;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import helperbot.command.Command;
@@ -85,6 +86,18 @@ public class HelperBot {
      */
     public String greet() {
         return this.ui.greet();
+    }
+
+    /**
+     * save current <code>TaskList</code> to the HelperBot.txt
+     */
+    public void saveToFile() {
+        try {
+            this.storage.write(this.tasks);
+            ui.showExitMessage();
+        } catch (IOException e) {
+            ui.showExitErrorMessage(e.toString());
+        }
     }
 
     public static void main(String[] args) {

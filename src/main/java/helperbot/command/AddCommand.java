@@ -24,11 +24,11 @@ public class AddCommand extends Command {
     /**
      * Generate a <code>AddCommand</code>.
      * @param command The type of the task.
-     * @param message The input from user.
+     * @param splitMessages The input from user.
      */
-    public AddCommand(String command, String message) {
+    public AddCommand(String command, String splitMessages) {
         this.command = command;
-        this.message = message;
+        this.message = splitMessages;
     }
 
     @Override

@@ -53,13 +53,20 @@ public class TaskList {
 
     /**
      * Generates a <code>TaskList</code> where all the <code>Task</code> due on the specific date.
-     * @param date The date that <code>Task</code> will due.
+     * @param dates The dates that <code>Task</code> will due.
      * @return <code>TaskList</code>.
      */
-    public TaskList getTaskOnDate(LocalDate date) {
+    public TaskList getTaskOnDate(LocalDate ... dates) {
         TaskList tasks = new TaskList();
         for (Task task: this.tasks) {
-            if (task.isSameDate(date)) {
+            boolean isOnDate = false;
+            for (LocalDate date : dates) {
+                if (task.isSameDate(date)) {
+                    isOnDate = true;
+                    break;
+                }
+            }
+            if (isOnDate) {
                 tasks.add(task);
             }
         }
@@ -68,13 +75,20 @@ public class TaskList {
 
     /**
      * Generates <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
-     * @param description The keyword to be matched.
+     * @param descriptions The keyword to be matched.
      * @return <code>TaskList</code> containing all the <code>Task</code> match <code>description</code>.
      */
-    public TaskList match(String description) {
+    public TaskList match(String ... descriptions) {
         TaskList tasks = new TaskList();
         for (Task task: this.tasks) {
-            if (task.match(description)) {
+            boolean isMatched = true;
+            for (String description: descriptions) {
+                if (!task.match(description.trim())) {
+                    isMatched = false;
+                    break;
+                }
+            }
+            if (isMatched) {
                 tasks.add(task);
             }
         }
