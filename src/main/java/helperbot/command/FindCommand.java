@@ -22,7 +22,8 @@ public class FindCommand extends Command {
     @Override
     public String execute(TaskList tasks, Storage storage, Ui ui) {
         try {
-            return ui.printTaskList(true, tasks.match(this.message.substring(5)).toString());
+            return ui.printTaskList(true,
+                    tasks.match(this.message.substring(5).split(" ")).toString());
         } catch (IndexOutOfBoundsException e) {
             return ui.showErrorMessage("Invalid Argument: String to be matched is missing.");
         }

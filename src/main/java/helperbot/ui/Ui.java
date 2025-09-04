@@ -2,6 +2,8 @@ package helperbot.ui;
 
 import helperbot.task.Task;
 
+import java.util.Arrays;
+
 /**
  * Represents the interface of <b>HelperBot</b>.
  */
@@ -23,22 +25,28 @@ public class Ui {
 
     /**
      * Prints the information of the marked <code>Task</code>.
-     * @param index The index of the <code>Task</code>.
-     * @param task <code>Task</code>.
+     * @param indices The index of the <code>Task</code>s.
+     * @param markedTasks The string representation of <code>Task</code>.
      * @return The message.
      */
-    public String showOutputOfMarkCommand(int index, Task task) {
-        return this.print("Nice! I have marked HelperBot task " + (index + 1) + " as done!\n\t" + task);
+    public String showOutputOfMarkCommand(String[] indices, String[] markedTasks) {
+        return this.print("Nice! I have marked HelperBot task "
+                + String.join(", ", indices)
+                + " as done!\n\t"
+                + String.join("\n\t", markedTasks));
     }
 
     /**
      * Prints the information of the unmarked <code>Task</code>.
-     * @param index The index of the <code>Task</code>.
-     * @param task <code>Task</code>.
+     * @param indices The index of the <code>Task</code>s.
+     * @param unmarkedTasks The string representation of <code>Task</code>.
      * @return The message.
      */
-    public String showOutputOfUnmarkCommand(int index, Task task) {
-        return this.print("Nice! I have marked HelperBot task " + (index + 1) + " as not done yet!\n\t" + task);
+    public String showOutputOfUnmarkCommand(String[] indices, String[] unmarkedTasks) {
+        return this.print("Nice! I have marked HelperBot task "
+                + String.join(", ", indices)
+                + " as not done yet!\n\t"
+                + String.join("\n\t", unmarkedTasks));
     }
 
     /**
@@ -66,16 +74,16 @@ public class Ui {
 
     /**
      * Shows the outcome of deletion
-     * @param task <code>Task</code> deleted.
+     * @param removedTasks <code>Task</code> deleted.
      * @param size The size of <code>TaskList</code> after deletion.
-     * @param index The index of <code>Task</code>.
+     * @param indices The index of <code>Task</code>.
      * @return The message.
      */
-    public String showOutputOfDeleteCommand(Task task, int size, int index) {
+    public String showOutputOfDeleteCommand(String[] removedTasks, int size, String[] indices) {
         return this.print("Nice! I have removed HelperBot task "
-                + (index + 1)
+                + String.join(", ", indices)
                 + "!\n\t"
-                + task
+                + String.join("\n\t", removedTasks)
                 + "\nYou now have "
                 + size
                 + " tasks in the list.");
@@ -126,9 +134,10 @@ public class Ui {
      * @return The message.
      */
     private String print(String message) {
-        System.out.println(Ui.LINE);
-        System.out.println(message);
-        System.out.println(Ui.LINE);
+
+        // uncomment next three line to print UI at terminal
+        // System.out.println(Ui.LINE + "\n" + message + "\n" + UI.Line);
+
         return message;
     }
 }
