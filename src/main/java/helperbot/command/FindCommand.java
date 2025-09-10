@@ -2,7 +2,7 @@ package helperbot.command;
 
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
-import helperbot.ui.Ui;
+import helperbot.ui.Response;
 
 /**
  * Represents a command that find any <code>Task</code> whose description contains specific keyword.
@@ -20,12 +20,12 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Storage storage, Ui ui) {
+    public String execute(TaskList tasks, Storage storage, Response response) {
         try {
-            return ui.printTaskList(true,
+            return response.getTaskListResponse(true,
                     tasks.match(this.message.substring(5).split(" ")).toString());
         } catch (IndexOutOfBoundsException e) {
-            return ui.showErrorMessage("Invalid Argument: String to be matched is missing.");
+            return response.getErrorMessage("Invalid Argument: String to be matched is missing.");
         }
     }
 }

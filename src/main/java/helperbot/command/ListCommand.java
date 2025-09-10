@@ -2,7 +2,7 @@ package helperbot.command;
 
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
-import helperbot.ui.Ui;
+import helperbot.ui.Response;
 
 /**
  * Represents a command which show all the <code>Task</code> in the <code>TaskList</code>.
@@ -10,7 +10,7 @@ import helperbot.ui.Ui;
 public class ListCommand extends Command {
 
     @Override
-    public String execute(TaskList tasks, Storage storage, Ui ui) {
-        return ui.printTaskList(false, tasks.toString());
+    public String execute(TaskList tasks, Storage storage, Response response) {
+        return response.getTaskListResponse(false, tasks.toString());
     }
 }

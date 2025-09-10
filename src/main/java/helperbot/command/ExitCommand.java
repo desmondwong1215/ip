@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
-import helperbot.ui.Ui;
+import helperbot.ui.Response;
 
 /**
  * Represents a command which exit from <b>HelperBot</b>.
@@ -12,12 +12,12 @@ import helperbot.ui.Ui;
 public class ExitCommand extends Command {
 
     @Override
-    public String execute(TaskList tasks, Storage storage, Ui ui) {
+    public String execute(TaskList tasks, Storage storage, Response response) {
         try {
             storage.write(tasks);
-            return ui.showExitMessage();
+            return response.getExitMessage();
         } catch (IOException e) {
-            return ui.showExitErrorMessage("Error: Unable to write helperbot.task to the file.\n");
+            return response.getExitErrorMessage("Error: Unable to write helperbot.task to the file.\n");
         }
     }
 

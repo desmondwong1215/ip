@@ -2,7 +2,7 @@ package helperbot.command;
 
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
-import helperbot.ui.Ui;
+import helperbot.ui.Response;
 
 /**
  * Represents a command in <b>HelperBot</b>.
@@ -14,10 +14,10 @@ public abstract class Command {
      *
      * @param tasks A list of tasks in HelperBot.
      * @param storage Storage of HelperBot.
-     * @param ui Interface of HelperBot.
+     * @param response Interface of HelperBot.
      * @return The output from HelperBot.
      */
-    public abstract String execute(TaskList tasks, Storage storage, Ui ui);
+    public abstract String execute(TaskList tasks, Storage storage, Response response);
 
     /**
      * Checks if the command is an <code>ExitCommand</code>.

@@ -17,7 +17,7 @@ import helperbot.task.TaskList;
 public class HelperBot {
 
     private final TaskList tasks;
-    private final Ui ui;
+    private final Response response;
     private final Storage storage;
 
     /**
@@ -26,15 +26,15 @@ public class HelperBot {
      */
     public HelperBot(String filePath) {
         TaskList tasks1;
-        this.ui = new Ui();
+        this.response = new Response();
         this.storage = new Storage(filePath);
         try {
             tasks1 = new TaskList(this.storage.load());
         } catch (FileNotFoundException e) {
-            this.ui.showErrorMessage(filePath + " is not found.");
+            this.response.getErrorMessage(filePath + " is not found.");
             tasks1 = new TaskList();
         } catch (HelperBotFileException e) {
-            this.ui.showErrorMessage(e.toString());
+            this.response.getErrorMessage(e.toString());
             tasks1 = new TaskList();
         }
         this.tasks = tasks1;
@@ -45,7 +45,7 @@ public class HelperBot {
      */
     public void chat() {
         // greet the user
-        this.ui.greet();
+        this.response.getGreetMessage();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -55,13 +55,13 @@ public class HelperBot {
                 System.out.println();
                 String message = scanner.nextLine();
                 Command command = Parser.parse(message);
-                command.execute(this.tasks, this.storage, this.ui);
+                command.execute(this.tasks, this.storage, this.response);
                 if (command.isExit()) {
                     break;
                 }
             } catch (HelperBotCommandException e) {
                 // catch an invalid HelperBot.command
-                this.ui.showErrorMessage(e.toString());
+                this.response.getErrorMessage(e.toString());
             }
         }
 
@@ -74,10 +74,10 @@ public class HelperBot {
     public String getResponse(String input) {
         try {
             Command command = Parser.parse(input);
-            return command.execute(this.tasks, this.storage, this.ui);
+            return command.execute(this.tasks, this.storage, this.response);
         } catch (HelperBotCommandException e) {
             // catch an invalid HelperBot.command
-            return this.ui.showErrorMessage(e.toString());
+            return this.response.getErrorMessage(e.toString());
         }
     }
 
@@ -85,7 +85,7 @@ public class HelperBot {
      * Greets the user
      */
     public String greet() {
-        return this.ui.greet();
+        return this.response.getGreetMessage();
     }
 
     /**
@@ -94,9 +94,9 @@ public class HelperBot {
     public void saveToFile() {
         try {
             this.storage.write(this.tasks);
-            ui.showExitMessage();
+            response.getExitMessage();
         } catch (IOException e) {
-            ui.showExitErrorMessage(e.toString());
+            response.getExitErrorMessage(e.toString());
         }
     }
 

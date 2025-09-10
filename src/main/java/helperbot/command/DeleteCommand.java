@@ -1,14 +1,11 @@
 package helperbot.command;
 
 import helperbot.storage.Storage;
-import helperbot.task.Task;
 import helperbot.task.TaskList;
-import helperbot.ui.Ui;
+import helperbot.ui.Response;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Represents a command which delete the ith <code>Task</code> in the <code>TaskList</code>.
@@ -26,7 +23,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Storage storage, Ui ui) {
+    public String execute(TaskList tasks, Storage storage, Response response) {
         int i = 1;
         int length = this.splitMessages.length;
         Integer[] indices = new Integer[length - 1];
@@ -42,20 +39,20 @@ public class DeleteCommand extends Command {
                 removedTasks[i] = tasks.remove(index).toString();
                 i++;
             }
-            return ui.showOutputOfDeleteCommand(removedTasks, tasks.size(),
+            return response.getDeleteCommandResponse(removedTasks, tasks.size(),
                     Arrays.copyOfRange(this.splitMessages, 1, length));
         } catch (IndexOutOfBoundsException e) {
             if (this.splitMessages.length == 1) {
                 // the message length < 2, index is not provided
-                return ui.showErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
+                return response.getErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
                         + this.splitMessages[0] + ".");
             } else {
                 // index >= tasks.size(), helperbot.task is not found
-                return ui.showErrorMessage("Invalid Argument: Task " + (indices[i] + 1) + " is not found.");
+                return response.getErrorMessage("Invalid Argument: Task " + (indices[i] + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
             // the second input cannot be parsed as an integer
-            return ui.showErrorMessage("Invalid Argument: " + this.splitMessages[i] + " cannot be parsed as an integer.");
+            return response.getErrorMessage("Invalid Argument: " + this.splitMessages[i] + " cannot be parsed as an integer.");
         }
     }
 }

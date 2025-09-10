@@ -11,17 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Test <code>Ui</code>.
  */
-class UiTest {
+class ResponseTest {
 
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private Ui ui;
+    private Response response;
     private static final String LINE = "____________________________________________________________";
 
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outputStream));
-        ui = new Ui();
+        response = new Response();
     }
 
     @AfterEach
@@ -31,7 +31,7 @@ class UiTest {
 
     @Test
     void greet_validOutput_success() {
-        ui.greet();
+        response.getGreetMessage();
         String expectedOutput = LINE + "\n"
                 + "Hello! I'm HelperBot.\nWhat can I do for you?\n"
                 + LINE + "\n";
@@ -46,7 +46,7 @@ class UiTest {
                 return "[T][X] test task";
             }
         };
-        ui.showOutputOfMarkCommand(0, mockTask);
+        response.getMarkCommandResponse(new String[] {"0"}, new String[] {mockTask.toString()});
         String expectedOutput = LINE + "\n"
                 + "Nice! I have marked HelperBot task 1 as done!\n\t[T][X] test task\n"
                 + LINE + "\n";
@@ -61,7 +61,7 @@ class UiTest {
                 return "[T][ ] another test task";
             }
         };
-        ui.showOutputOfUnmarkCommand(1, mockTask);
+        response.getUnmarkCommandResponse(new String[] {"1"}, new String[] {mockTask.toString()});
         String expectedOutput = LINE + "\n"
                 + "Nice! I have marked HelperBot task 2 as not done yet!\n\t[T][ ] another test task\n"
                 + LINE + "\n";
@@ -71,7 +71,7 @@ class UiTest {
     @Test
     void showError_validMessage_correctOutput() {
         String errorMessage = "Invalid command entered.";
-        ui.showErrorMessage(errorMessage);
+        response.getErrorMessage(errorMessage);
         String expectedOutput = LINE + "\n"
                 + "Error!\n"
                 + errorMessage + "\n"
@@ -81,7 +81,7 @@ class UiTest {
 
     @Test
     void exit_noError_correctOutput() {
-        ui.showExitMessage();
+        response.getExitMessage();
         String expectedOutput = LINE + "\n"
                 + "Bye. Hope to see you again soon!\n"
                 + LINE + "\n";
@@ -91,7 +91,7 @@ class UiTest {
     @Test
     void exitWithError_validMessage_correctOutput() {
         String errorMessage = "File could not be loaded.";
-        ui.showExitErrorMessage(errorMessage);
+        response.getExitErrorMessage(errorMessage);
         String expectedOutput = LINE + "\n"
                 + errorMessage + "\n"
                 + "Bye. Hope to see you again soon!\n"

@@ -8,7 +8,7 @@ import helperbot.task.Event;
 import helperbot.task.Task;
 import helperbot.task.TaskList;
 import helperbot.task.ToDo;
-import helperbot.ui.Ui;
+import helperbot.ui.Response;
 
 /**
  * Represents a <code>Command</code> which add a new <code>Task</code> to the <code>Tasklist</code>.
@@ -32,7 +32,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Storage storage, Ui ui) {
+    public String execute(TaskList tasks, Storage storage, Response response) {
         try {
             Task task = switch (this.command) {
             case "todo" -> ToDo.fromUserInput(this.message);
@@ -41,10 +41,10 @@ public class AddCommand extends Command {
             default -> Event.fromUserInput(this.message);
             };
             tasks.add(task);
-            return ui.showOutputOfAddCommand(task, tasks.size());
+            return response.getAddCommandResponse(task, tasks.size());
         } catch (HelperBotArgumentException e) {
             // /by is not entered correctly
-            return ui.showErrorMessage(e.toString());
+            return response.getErrorMessage(e.toString());
         }
     }
 }

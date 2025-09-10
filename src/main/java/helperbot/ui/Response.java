@@ -2,25 +2,21 @@ package helperbot.ui;
 
 import helperbot.task.Task;
 
-import java.util.Arrays;
-
 /**
  * Represents the interface of <b>HelperBot</b>.
  */
-public class Ui {
+public class Response {
 
-    private static final String LINE = "____________________________________________________________";
     private static final String NAME = "HelperBot";
 
     /**
      * Greets the user.
      * @return The message.
      */
-    public String greet() {
-        return this.print("Hello! I'm "
-                + Ui.NAME
-                + ".\nWhat can I do for you?"
-        );
+    public String getGreetMessage() {
+        return "Hello! I'm "
+                + Response.NAME
+                + ".\nWhat can I do for you?";
     }
 
     /**
@@ -29,11 +25,11 @@ public class Ui {
      * @param markedTasks The string representation of <code>Task</code>.
      * @return The message.
      */
-    public String showOutputOfMarkCommand(String[] indices, String[] markedTasks) {
-        return this.print("Nice! I have marked HelperBot task "
+    public String getMarkCommandResponse(String[] indices, String[] markedTasks) {
+        return "Nice! I have marked HelperBot task "
                 + String.join(", ", indices)
                 + " as done!\n\t"
-                + String.join("\n\t", markedTasks));
+                + String.join("\n\t", markedTasks);
     }
 
     /**
@@ -42,11 +38,11 @@ public class Ui {
      * @param unmarkedTasks The string representation of <code>Task</code>.
      * @return The message.
      */
-    public String showOutputOfUnmarkCommand(String[] indices, String[] unmarkedTasks) {
-        return this.print("Nice! I have marked HelperBot task "
+    public String getUnmarkCommandResponse(String[] indices, String[] unmarkedTasks) {
+        return "Nice! I have marked HelperBot task "
                 + String.join(", ", indices)
                 + " as not done yet!\n\t"
-                + String.join("\n\t", unmarkedTasks));
+                + String.join("\n\t", unmarkedTasks);
     }
 
     /**
@@ -54,8 +50,8 @@ public class Ui {
      * @param message Error message.
      * @return The message.
      */
-    public String showErrorMessage(String message) {
-        return this.print("Error!\n" + message);
+    public String getErrorMessage(String message) {
+        return "Error!\n" + message;
     }
 
     /**
@@ -64,12 +60,12 @@ public class Ui {
      * @param size The size of <code>TaskList</code> after addition.
      * @return The message.
      */
-    public String showOutputOfAddCommand(Task task, int size) {
-        return this.print("Got it. I've added this HelperBot task:\n\t"
+    public String getAddCommandResponse(Task task, int size) {
+        return "Got it. I've added this HelperBot task:\n\t"
                 + task
                 + "\nYou now have "
                 + size
-                + " tasks in the list.");
+                + " tasks in the list.";
     }
 
     /**
@@ -79,14 +75,14 @@ public class Ui {
      * @param indices The index of <code>Task</code>.
      * @return The message.
      */
-    public String showOutputOfDeleteCommand(String[] removedTasks, int size, String[] indices) {
-        return this.print("Nice! I have removed HelperBot task "
+    public String getDeleteCommandResponse(String[] removedTasks, int size, String[] indices) {
+        return "Nice! I have removed HelperBot task "
                 + String.join(", ", indices)
                 + "!\n\t"
                 + String.join("\n\t", removedTasks)
                 + "\nYou now have "
                 + size
-                + " tasks in the list.");
+                + " tasks in the list.";
     }
 
     /**
@@ -94,19 +90,19 @@ public class Ui {
      * @param isMatched <code>true</code> if HelperBot is matching <code>Task</code>.
      * @param taskList String representation of <code>TaskList</code>.
      */
-    public String printTaskList(boolean isMatched, String taskList) {
+    public String getTaskListResponse(boolean isMatched, String taskList) {
         if (taskList.isEmpty()) {
-            return printEmptyTaskList(isMatched);
+            return getEmptyTaskListResponse(isMatched);
         }
-        return this.print("Here are the " + (isMatched ? "matching " : "") + "tasks in your list:" + taskList);
+        return "Here are the " + (isMatched ? "matching " : "") + "tasks in your list:" + taskList;
     }
 
     /**
      * Exits the program.
      * @return The message.
      */
-    public String showExitMessage() {
-        return this.print("Bye. Hope to see you again soon!");
+    public String getExitMessage() {
+        return "Bye. Hope to see you again soon!";
     }
 
     /**
@@ -114,8 +110,8 @@ public class Ui {
      * @param message Error message.
      * @return The message.
      */
-    public String showExitErrorMessage(String message) {
-        return this.print(message + "\nBye. Hope to see you again soon!");
+    public String getExitErrorMessage(String message) {
+        return message + "\nBye. Hope to see you again soon!";
     }
 
 
@@ -124,20 +120,8 @@ public class Ui {
      * @param isMatched True if empty task list after matching.
      * @return The message.
      */
-    private String printEmptyTaskList(boolean isMatched) {
-        return this.print("You do not have any " + (isMatched ? "matching " : "") + "HelperBot task.");
+    private String getEmptyTaskListResponse(boolean isMatched) {
+        return "You do not have any " + (isMatched ? "matching " : "") + "HelperBot task.";
     }
 
-    /**
-     * Prints and returns the message
-     * @param message Output to the user.
-     * @return The message.
-     */
-    private String print(String message) {
-
-        // uncomment next three line to print UI at terminal
-        // System.out.println(Ui.LINE + "\n" + message + "\n" + UI.Line);
-
-        return message;
-    }
 }
