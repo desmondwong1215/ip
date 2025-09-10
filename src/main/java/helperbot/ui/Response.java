@@ -102,6 +102,18 @@ public class Response {
         return message + "\nBye. Hope to see you again soon!";
     }
 
+    /**
+     * Output the result of update command.
+     * @param index The index of the task.
+     * @param task The task updated.
+     * @return The result of the command.
+     */
+    public String getUpdateOutput(int index, Task task) {
+        return "I have updated HelperBot task "
+                + index
+                + "!\n\t"
+                + task.toString();
+    }
 
     /**
      * Error occurs when exiting the program.

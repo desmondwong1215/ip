@@ -2,13 +2,14 @@ package helperbot.task;
 
 import java.time.LocalDate;
 
+import helperbot.exception.HelperBotArgumentException;
 import helperbot.exception.HelperBotFileException;
 
 /**
  * Represents a task in <b>HelperBot</b>.
  */
 public class Task {
-    private final String description;
+    private String description;
     private boolean isDone;
 
     /**
@@ -39,11 +40,19 @@ public class Task {
     }
 
     /**
+     * Change the description.
+     * @param description The new description.
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
      * Gets the icon for the status of the <code>Task</code>.
      * @return 'X' if the <code>Task</code> is done, else ' '.
      */
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done helperbot.task with X
+        return (isDone ? "X" : " ");
     }
 
     /**
@@ -84,6 +93,16 @@ public class Task {
      */
     public boolean match(String description) {
         return this.description.contains(description);
+    }
+
+    /**
+     * Update the content of the task.
+     * @param message The new content.
+     * @return The updated task.
+     * @throws HelperBotArgumentException If the arguments provided are in wrong format
+     */
+    public Task update(String message) throws HelperBotArgumentException {
+        return this;
     }
 
     @Override
