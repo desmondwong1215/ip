@@ -45,7 +45,7 @@ public class Storage {
      */
     public void write(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(this.filePath);
-        fw.write(tasks.toStrInFile());
+        fw.write(tasks.toSaveFormat());
         fw.close();
     }
 }

@@ -34,17 +34,17 @@ public class MarkCommand extends Command {
         ///  splitMessages[0] is the command, so the arguments start from index 1.
         int ptr = 1;
         int length = this.splitMessages.length;
+        String[] intStrs = Arrays.copyOfRange(this.splitMessages, 1, length);
         Integer[] indices = new Integer[length - 1];
         String[] markedTasks = new String[length - 1];
         try {
-            while (ptr < length) {
-                indices[ptr - 1] = Integer.parseInt(this.splitMessages[ptr]) - 1;
-                ptr++;
-            }
-            ptr = 0;
+            indices = Arrays.stream(intStrs)
+                    .map(Integer::parseInt)
+                    .map(j -> j - 1)
+                    .toList()
+                    .toArray(new Integer[0]);
             this.markTasks(tasks, indices, markedTasks);
-            return response.getMarkCommandResponse(this.isMarked,
-                    Arrays.copyOfRange(this.splitMessages, 1, length), markedTasks);
+            return response.getMarkCommandResponse(this.isMarked, intStrs, markedTasks);
         } catch (IndexOutOfBoundsException e) {
             if (this.splitMessages.length == 1) {
                 return response.getErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "

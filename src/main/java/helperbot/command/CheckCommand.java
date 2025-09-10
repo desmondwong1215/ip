@@ -2,6 +2,7 @@ package helperbot.command;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
@@ -28,10 +29,11 @@ public class CheckCommand extends Command {
     @Override
     public String execute(TaskList tasks, Storage storage, Response response) {
         try {
-            LocalDate[] dates = new LocalDate[this.splitMessages.length - 1];
-            for (int i = 1; i < this.splitMessages.length; i++) {
-                dates[i - 1] = LocalDate.parse(this.splitMessages[i]);
-            }
+            LocalDate[] dates = Arrays.stream(this.splitMessages)
+                    .skip(1)
+                    .map(LocalDate::parse)
+                    .toList()
+                    .toArray(new LocalDate[0]);
             return response.getTaskListResponse(true, tasks.getTaskOnDate(dates).toString());
         } catch (DateTimeParseException e) {
             return response.getErrorMessage("Invalid Argument: Please enter the date in YYYY-MM-DD.");

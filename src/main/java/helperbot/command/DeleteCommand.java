@@ -5,7 +5,6 @@ import helperbot.task.TaskList;
 import helperbot.ui.Response;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Represents a command which delete the ith <code>Task</code> in the <code>TaskList</code>.
@@ -27,32 +26,33 @@ public class DeleteCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Storage storage, Response response) {
-        int i = 1;
+        int ptr = 1;
         int length = this.splitMessages.length;
+        String[] intStrs = Arrays.copyOfRange(this.splitMessages, 1, length);
         Integer[] indices = new Integer[length - 1];
         String[] removedTasks = new String[length - 1];
         try {
-            while (i < length) {
-                indices[i - 1] = Integer.parseInt(this.splitMessages[1]) - 1;
-                i++;
-            }
-            Arrays.sort(indices, Collections.reverseOrder());
-            i = 0;
+            indices = Arrays.stream(intStrs)
+                    .map(Integer::parseInt)
+                    .map(j -> j - 1)
+                    .sorted((a, b) -> b - a)
+                    .toList()
+                    .toArray(new Integer[0]);
+            ptr = length - 2;
             for (Integer index: indices) {
-                removedTasks[i] = tasks.remove(index).toString();
-                i++;
+                removedTasks[ptr] = tasks.remove(index).toString();
+                ptr--;
             }
-            return response.getDeleteCommandResponse(removedTasks, tasks.size(),
-                    Arrays.copyOfRange(this.splitMessages, 1, length));
+            return response.getDeleteCommandResponse(removedTasks, tasks.size(), intStrs);
         } catch (IndexOutOfBoundsException e) {
             if (this.splitMessages.length == 1) {
                 return response.getErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
                         + this.splitMessages[0] + ".");
             } else {
-                return response.getErrorMessage("Invalid Argument: Task " + (indices[i] + 1) + " is not found.");
+                return response.getErrorMessage("Invalid Argument: Task " + (indices[ptr] + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
-            return response.getErrorMessage("Invalid Argument: " + this.splitMessages[i] + " cannot be parsed as an integer.");
+            return response.getErrorMessage("Invalid Argument: " + this.splitMessages[ptr] + " cannot be parsed as an integer.");
         }
     }
 }
