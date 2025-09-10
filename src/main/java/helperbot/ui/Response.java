@@ -21,28 +21,16 @@ public class Response {
 
     /**
      * Prints the information of the marked <code>Task</code>.
+     * @param isMarked True if it is a MarkCommand, false if it is a UnmarkCommand.
      * @param indices The index of the <code>Task</code>s.
      * @param markedTasks The string representation of <code>Task</code>.
      * @return The message.
      */
-    public String getMarkCommandResponse(String[] indices, String[] markedTasks) {
+    public String getMarkCommandResponse(boolean isMarked, String[] indices, String[] markedTasks) {
         return "Nice! I have marked HelperBot task "
                 + String.join(", ", indices)
-                + " as done!\n\t"
+                + (isMarked ? " as done!\n\t" : " as not done yet!\n\t")
                 + String.join("\n\t", markedTasks);
-    }
-
-    /**
-     * Prints the information of the unmarked <code>Task</code>.
-     * @param indices The index of the <code>Task</code>s.
-     * @param unmarkedTasks The string representation of <code>Task</code>.
-     * @return The message.
-     */
-    public String getUnmarkCommandResponse(String[] indices, String[] unmarkedTasks) {
-        return "Nice! I have marked HelperBot task "
-                + String.join(", ", indices)
-                + " as not done yet!\n\t"
-                + String.join("\n\t", unmarkedTasks);
     }
 
     /**
