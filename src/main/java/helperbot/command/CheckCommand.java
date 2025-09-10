@@ -19,6 +19,9 @@ public class CheckCommand extends Command {
      * @param splitMessages the input from user
      */
     public CheckCommand(String[] splitMessages) {
+        ///  There should be at least one word in the splitMessages
+        assert splitMessages.length != 0 : "The splitMessages is empty";
+
         this.splitMessages = splitMessages;
     }
 

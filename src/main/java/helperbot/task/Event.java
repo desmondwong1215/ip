@@ -50,7 +50,10 @@ public class Event extends Task {
             throw new HelperBotArgumentException("Please enter /from before entering /to");
         }
         try {
+            ///  Ignore "/from ", which are 6 characters.
             String dateTime = message.substring(fromIndex + 6, toIndex).trim();
+            ///  Date should be in the format of YYYY-MM-DD, thus the first 10 chars refer date.
+            ///  The rest of the substring should refer to the time (if present).
             LocalDate fromDate = LocalDate.parse(dateTime.substring(0, 10));
             LocalTime fromTime = Event.getTime(dateTime.substring(10).trim());
             dateTime = message.substring(toIndex + 4).trim();
