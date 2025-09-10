@@ -1,10 +1,10 @@
 package helperbot.command;
 
+import java.util.Arrays;
+
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
 import helperbot.ui.Response;
-
-import java.util.Arrays;
 
 /**
  * Represents a command that change the status of a <code>Task</code>.

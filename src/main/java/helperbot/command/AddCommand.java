@@ -41,7 +41,7 @@ public class AddCommand extends Command {
             default -> {
                 ///  Tasks should be either 'todo', 'deadline', or 'event'.
                 ///  Thus, default case should not be used.
-                assert false: "Unhandled task: " + this.command;
+                assert false : "Unhandled task: " + this.command;
                 yield new Task("");
             }
             };

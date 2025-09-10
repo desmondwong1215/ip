@@ -1,12 +1,13 @@
 package helperbot.storage;
 
-import helperbot.exception.HelperBotFileException;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Test;
+
+import helperbot.exception.HelperBotFileException;
 
 /**
  * Simplified version of <code>Storage</code>.
@@ -53,7 +54,7 @@ public class StorageTest {
         } catch (HelperBotFileException e) {
             fail();
         } catch (FileNotFoundException ignored) {
-
+            System.err.println("An error occurred.");
         }
     }
 
@@ -70,8 +71,8 @@ public class StorageTest {
     public void write_invalidFilePath_exceptionThrow() {
         try {
             new StorageStub("./date/HelperBot.txt").write();
-        }  catch (IOException ignored) {
-
+        } catch (IOException ignored) {
+            System.err.println("An error occurred.");
         }
     }
 }

@@ -1,10 +1,10 @@
 package helperbot.command;
 
+import java.util.Arrays;
+
 import helperbot.storage.Storage;
 import helperbot.task.TaskList;
 import helperbot.ui.Response;
-
-import java.util.Arrays;
 
 /**
  * Represents a command which delete the ith <code>Task</code> in the <code>TaskList</code>.
@@ -52,7 +52,8 @@ public class DeleteCommand extends Command {
                 return response.getErrorMessage("Invalid Argument: Task " + (indices[ptr] + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
-            return response.getErrorMessage("Invalid Argument: " + this.splitMessages[ptr] + " cannot be parsed as an integer.");
+            return response.getErrorMessage("Invalid Argument: " + this.splitMessages[ptr]
+                    + " cannot be parsed as an integer.");
         }
     }
 }

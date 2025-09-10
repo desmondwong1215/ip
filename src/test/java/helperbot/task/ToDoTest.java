@@ -1,9 +1,12 @@
 package helperbot.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
 import helperbot.exception.HelperBotArgumentException;
 import helperbot.exception.HelperBotFileException;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test <code>ToDo</code>.

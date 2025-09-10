@@ -7,6 +7,7 @@ plugins {
 
 checkstyle {
     toolVersion = '11.0.1'
+    configFile file("config/checkstyle/checkstyle.xml")
 }
 
 repositories {
@@ -52,9 +53,9 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "helperBot"
     archiveClassifier = null
-    archiveFileName = 'duke.jar'
+    archiveFileName = 'helperBot.jar'
 }
 
 run{

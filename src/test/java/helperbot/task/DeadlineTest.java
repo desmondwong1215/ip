@@ -1,8 +1,11 @@
 package helperbot.task;
 
-import helperbot.exception.HelperBotArgumentException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import helperbot.exception.HelperBotArgumentException;
 
 /**
  * Test <code>Deadline</code>.

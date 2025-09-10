@@ -1,11 +1,15 @@
 package helperbot.task;
 
-import helperbot.exception.HelperBotArgumentException;
-import helperbot.exception.HelperBotFileException;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import helperbot.exception.HelperBotArgumentException;
+import helperbot.exception.HelperBotFileException;
 
 /**
  * Test <code>Event</code>.
@@ -123,7 +127,7 @@ class EventTest {
     @Test
     void toStrInFile_eventWithoutTime_correctFormat() {
         Event event = new Event("take a trip", LocalDate.of(2025, 12, 20),
-       null,
+                    null,
                 LocalDate.of(2025, 12, 25), null);
         assertEquals("E,0,take a trip,2025-12-20,,2025-12-25,", event.toSavaFormat());
     }

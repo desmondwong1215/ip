@@ -1,10 +1,18 @@
 package helperbot.parser;
 
-import helperbot.command.*;
-import helperbot.exception.HelperBotCommandException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import helperbot.command.AddCommand;
+import helperbot.command.CheckCommand;
+import helperbot.command.DeleteCommand;
+import helperbot.command.ExitCommand;
+import helperbot.command.ListCommand;
+import helperbot.command.MarkCommand;
+import helperbot.exception.HelperBotCommandException;
 
 /**
  * Test <code>Parser</code>.
@@ -19,7 +27,7 @@ public class ParserTest {
             assertInstanceOf(AddCommand.class, Parser.parse(
                     "event project meeting /from 2025-10-19 12:00 /to 2025-10-19 14:00"));
         } catch (HelperBotCommandException e) {
-           fail();
+            fail();
         }
     }
 
