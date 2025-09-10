@@ -37,13 +37,18 @@ public class AddCommand extends Command {
             Task task = switch (this.command) {
             case "todo" -> ToDo.fromUserInput(this.message);
             case "deadline" -> Deadline.fromUserInput(this.message);
-            // HelperBot Command is Event
-            default -> Event.fromUserInput(this.message);
+            case "event" -> Event.fromUserInput(this.message);
+            default -> {
+                ///  Tasks should be either 'todo', 'deadline', or 'event'.
+                ///  Thus, default case should not be used.
+                assert false: "Unhandled task: " + this.command;
+                yield new Task("");
+            }
             };
             tasks.add(task);
             return response.getAddCommandResponse(task, tasks.size());
         } catch (HelperBotArgumentException e) {
-            // /by is not entered correctly
+            /// /by is not entered correctly
             return response.getErrorMessage(e.toString());
         }
     }

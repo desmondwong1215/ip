@@ -19,6 +19,9 @@ public class DeleteCommand extends Command {
      * @param splitMessages the input from user.
      */
     public DeleteCommand(String[] splitMessages) {
+        ///  There should be at least one word in the splitMessages
+        assert splitMessages.length != 0 : "The splitMessages is empty";
+
         this.splitMessages = splitMessages;
     }
 
@@ -43,15 +46,12 @@ public class DeleteCommand extends Command {
                     Arrays.copyOfRange(this.splitMessages, 1, length));
         } catch (IndexOutOfBoundsException e) {
             if (this.splitMessages.length == 1) {
-                // the message length < 2, index is not provided
                 return response.getErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
                         + this.splitMessages[0] + ".");
             } else {
-                // index >= tasks.size(), helperbot.task is not found
                 return response.getErrorMessage("Invalid Argument: Task " + (indices[i] + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
-            // the second input cannot be parsed as an integer
             return response.getErrorMessage("Invalid Argument: " + this.splitMessages[i] + " cannot be parsed as an integer.");
         }
     }
