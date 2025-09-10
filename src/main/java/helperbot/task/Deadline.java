@@ -13,8 +13,8 @@ import helperbot.exception.HelperBotFileException;
  */
 public class Deadline extends Task {
 
-    private final LocalDate byDate;
-    private final LocalTime byTime;
+    private LocalDate byDate;
+    private LocalTime byTime;
 
     /**
      * Generates a <code>Deadline</code>
@@ -99,6 +99,30 @@ public class Deadline extends Task {
                 + this.byDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
                 + (this.byTime == null ? "" : ", " + this.byTime)
                 + ")";
+    }
+
+    @Override
+    public Task update(String message) throws HelperBotArgumentException {
+        int byIndex = message.indexOf("/by ");
+        if (byIndex == -1) {
+            this.setDescription(message);
+        } else {
+            if (byIndex != 0) {
+                this.setDescription(message.substring(0, byIndex));
+            }
+            try {
+                String dateTime = message.substring(byIndex + 4).trim();
+                this.byDate = LocalDate.parse(dateTime.substring(0, 10));
+                this.byTime = null;
+                String time = dateTime.substring(10).trim();
+                if (!time.isEmpty()) {
+                    byTime = LocalTime.parse(time);
+                }
+            } catch (DateTimeParseException e) {
+                throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /by");
+            }
+        }
+        return this;
     }
 
     private static Deadline getDeadline(String[] message) throws HelperBotFileException {

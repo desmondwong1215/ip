@@ -67,4 +67,10 @@ public class ToDo extends Task {
         return "[T]"
                 + super.toString();
     }
+
+    @Override
+    public Task update(String message) throws HelperBotArgumentException {
+        this.setDescription(message);
+        return this;
+    }
 }

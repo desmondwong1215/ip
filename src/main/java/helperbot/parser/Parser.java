@@ -9,6 +9,7 @@ import helperbot.command.ExitCommand;
 import helperbot.command.FindCommand;
 import helperbot.command.ListCommand;
 import helperbot.command.MarkCommand;
+import helperbot.command.UpdateCommand;
 import helperbot.exception.HelperBotCommandException;
 
 /**
@@ -24,20 +25,21 @@ public class Parser {
      */
     @SuppressWarnings("checkstyle:Indentation")
     public static Command parse(String message) throws HelperBotCommandException {
-        String[] splitMessage = message.split(" ");
-        String command = splitMessage[0].toLowerCase();
+        String[] splitMessages = message.split(" ");
+        String command = splitMessages[0].toLowerCase();
 
         return switch (command) {
         case "bye" -> new ExitCommand();
-        case "check" -> new CheckCommand(splitMessage);
-        case "delete" -> new DeleteCommand(splitMessage);
+        case "check" -> new CheckCommand(splitMessages);
+        case "delete" -> new DeleteCommand(splitMessages);
         case "deadline", "event", "todo" -> new AddCommand(command, message);
         case "find" -> new FindCommand(message);
         case "list" -> new ListCommand();
-        case "mark" -> new MarkCommand(splitMessage, true);
-        case "unmark" -> new MarkCommand(splitMessage, false);
+        case "mark" -> new MarkCommand(splitMessages, true);
+        case "unmark" -> new MarkCommand(splitMessages, false);
+        case "update" -> new UpdateCommand(splitMessages);
         // invalid HelperBot Command
-        default -> throw new HelperBotCommandException(splitMessage[0] + " is not found.");
+        default -> throw new HelperBotCommandException(splitMessages[0] + " is not found.");
         };
     }
 }
