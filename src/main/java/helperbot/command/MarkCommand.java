@@ -22,6 +22,9 @@ public class MarkCommand extends Command {
      * @param isMarked true if the <code>Task</code> is done, else false.
      */
     public MarkCommand(String[] splitMessages, boolean isMarked) {
+        ///  There should be at least one word in the splitMessages
+        assert splitMessages.length != 0 : "The splitMessages is empty";
+
         this.splitMessages = splitMessages;
         this.isMarked = isMarked;
     }
@@ -49,7 +52,6 @@ public class MarkCommand extends Command {
                         markedTasks);
             } else {
                 // mark the HelperBot task as not done
-                // mark the HelperBot task as done
                 for (Integer index: indices) {
                     tasks.unmark(index);
                     markedTasks[i] = tasks.get(index).toString();
@@ -60,15 +62,12 @@ public class MarkCommand extends Command {
             }
         } catch (IndexOutOfBoundsException e) {
             if (this.splitMessages.length == 1) {
-                // the message length < 2, index is not provided
                 return response.getErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
                         + this.splitMessages[0] + ".");
             } else {
-                // index >= tasks.size(), HelperBot task is not found
                 return response.getErrorMessage("Invalid Argument: Task " + (indices[i] + 1) + " is not found.");
             }
         } catch (NumberFormatException e) {
-            // the second input cannot be parsed as an integer
             return response.getErrorMessage("Invalid Argument: " + this.splitMessages[1] + " cannot be parsed as an integer.");
         }
     }
