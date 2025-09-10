@@ -116,12 +116,12 @@ public class TaskList {
      * Generates the string representation of the <code>TaskList</code>.
      * @return The string representation of the <code>TaskList</code>.
      */
-    public String toStrInFile() {
-        StringBuilder stringBuilder = new StringBuilder();
+    public String toSaveFormat() {
+        StringBuilder saveFormat = new StringBuilder();
         for (Task task: this.tasks) {
-            stringBuilder.append(task.toSavaFormat()).append("\n");
+            saveFormat.append(task.toSavaFormat()).append("\n");
         }
-        return stringBuilder.toString();
+        return saveFormat.toString();
     }
 
     @Override
