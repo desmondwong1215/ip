@@ -70,7 +70,6 @@ public class ToDo extends Task {
 
     @Override
     public Task update(String message) throws HelperBotArgumentException {
-        this.setDescription(message);
-        return this;
+        return ToDo.fromUserInput("todo " + message);
     }
 }

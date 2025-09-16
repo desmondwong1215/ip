@@ -27,6 +27,7 @@ public class UpdateCommand extends Command {
             Task task = tasks.get(taskIndex - 1).update(
                     String.join(" ",
                             Arrays.copyOfRange(this.splitMessages, 2, this.splitMessages.length)).trim());
+            tasks.set(taskIndex - 1, task);
             return response.getUpdateOutput(taskIndex, task);
         } catch (IndexOutOfBoundsException e) {
             return response.getErrorMessage("Invalid Argument: " + (this.splitMessages.length == 1

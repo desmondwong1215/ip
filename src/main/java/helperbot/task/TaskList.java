@@ -52,6 +52,15 @@ public class TaskList {
     }
 
     /**
+     * Replaces the <code>Task</code> with new instance.
+     * @param index The index of the target task.
+     * @param task The new Task.
+     */
+    public void set(int index, Task task) {
+        this.tasks.set(index, task);
+    }
+
+    /**
      * Generates a <code>TaskList</code> where all the <code>Task</code> due on the specific date.
      * @param dates The dates that <code>Task</code> will due.
      * @return <code>TaskList</code>.

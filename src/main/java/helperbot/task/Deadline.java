@@ -103,26 +103,23 @@ public class Deadline extends Task {
 
     @Override
     public Task update(String message) throws HelperBotArgumentException {
+        StringBuilder newMessage = new StringBuilder("deadline ");
         int byIndex = message.indexOf("/by ");
         if (byIndex == -1) {
-            this.setDescription(message);
+            newMessage.append(message)
+                    .append(" /by ")
+                    .append(this.byDate.toString())
+                    .append(" ")
+                    .append(this.byTime);
+        } else if (byIndex == 0) {
+            newMessage.append(this.getDescription())
+                    .append(" ")
+                    .append(message);
         } else {
-            if (byIndex != 0) {
-                this.setDescription(message.substring(0, byIndex));
-            }
-            try {
-                String dateTime = message.substring(byIndex + 4).trim();
-                this.byDate = LocalDate.parse(dateTime.substring(0, 10));
-                this.byTime = null;
-                String time = dateTime.substring(10).trim();
-                if (!time.isEmpty()) {
-                    byTime = LocalTime.parse(time);
-                }
-            } catch (DateTimeParseException e) {
-                throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /by");
-            }
+            newMessage.append(message);
         }
-        return this;
+        System.out.println(newMessage);
+        return Deadline.fromUserInput(newMessage.toString());
     }
 
     private static Deadline getDeadline(String[] message) throws HelperBotFileException {

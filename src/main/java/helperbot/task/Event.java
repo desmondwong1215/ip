@@ -123,91 +123,32 @@ public class Event extends Task {
 
     @Override
     public Task update(String message) throws HelperBotArgumentException {
+        String[] newMessage = new String[]{"event", this.getDescription(), "/from",
+                this.fromDate.toString() + " " + (this.fromTime == null ? "" : this.fromTime.toString()), "/to",
+                this.toDate.toString() + " " + (this.toTime == null ? "" : this.toTime.toString())};
         int fromIndex = message.indexOf("/from ");
         int toIndex = message.indexOf("/to ");
         if (fromIndex == -1 && toIndex == -1) {
-            this.setDescription(message);
+            newMessage[1] = message;
         } else if (fromIndex == -1) {
-            updateWithoutFromDateTime(message, toIndex);
+            if (toIndex != 0) {
+                newMessage[1] = message.substring(0, toIndex);
+            }
+            newMessage[5] = message.substring(toIndex + 4);
         } else if (toIndex == -1) {
-            updateWithoutToDateTime(message, fromIndex);
+            if (fromIndex != 0) {
+                newMessage[1] = message.substring(0, fromIndex);
+            }
+            newMessage[3] = message.substring(fromIndex + 6);
         } else {
-            updateFromAndToDateTime(message, fromIndex, toIndex);
-        }
-        return this;
-    }
-
-    private void updateWithoutToDateTime(String message, int fromIndex) throws HelperBotArgumentException {
-        if (fromIndex > 0) {
-            this.setDescription(message.substring(0, fromIndex));
-        }
-        try {
-            ///  Ignore "/from ", which are 6 characters.
-            String fromDateTime = message.substring(fromIndex + 6).trim();
-            ///  Date should be in the format of YYYY-MM-DD, thus the first 10 chars refer date.
-            ///  The rest of the substring should refer to the time (if present).
-            LocalDate fromDate = LocalDate.parse(fromDateTime.substring(0, 10));
-            LocalTime fromTime = Event.getTime(fromDateTime.substring(10).trim());
-            if (Event.isToBeforeFrom(fromDate, fromTime, this.toDate, this.toTime)) {
-                throw new HelperBotArgumentException("From datetime must be before to datetime");
+            if (fromIndex != 0) {
+                newMessage[1] = message.substring(0, fromIndex);
             }
-            this.fromDate = fromDate;
-            this.fromTime = fromTime;
-        } catch (IndexOutOfBoundsException e) {
-            throw new HelperBotArgumentException("Wrong format for Event");
-        } catch (DateTimeParseException e) {
-            throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /from and /to");
+            newMessage[3] = message.substring(fromIndex + 6, toIndex);
+            newMessage[5] = message.substring(toIndex + 4);
         }
-    }
-
-    private void updateWithoutFromDateTime(String message, int toIndex) throws HelperBotArgumentException {
-        if (toIndex > 0) {
-            this.setDescription(message.substring(0, toIndex));
-        }
-        try {
-            ///  Ignore "/to ", which are 4 characters.
-            String toDateTime = message.substring(toIndex + 4).trim();
-            ///  Date should be in the format of YYYY-MM-DD, thus the first 10 chars refer date.
-            ///  The rest of the substring should refer to the time (if present).
-            LocalDate toDate = LocalDate.parse(toDateTime.substring(0, 10));
-            LocalTime toTime = Event.getTime(toDateTime.substring(10).trim());
-            if (Event.isToBeforeFrom(this.fromDate, this.fromTime, toDate, toTime)) {
-                throw new HelperBotArgumentException("From datetime must be before to datetime");
-            }
-            this.toDate = toDate;
-            this.toTime = toTime;
-        } catch (IndexOutOfBoundsException e) {
-            throw new HelperBotArgumentException("Wrong format for Event");
-        } catch (DateTimeParseException e) {
-            throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /from and /to");
-        }
-    }
-
-    private void updateFromAndToDateTime(String message, int fromIndex, int toIndex) throws HelperBotArgumentException {
-        if (fromIndex > toIndex) {
-            throw new HelperBotArgumentException("Please enter /from before entering /to");
-        }
-        if (fromIndex > 0) {
-            this.setDescription(message.substring(0, fromIndex));
-        }
-        try {
-            ///  Ignore "/from ", which are 6 characters.
-            String fromDateTime = message.substring(fromIndex + 6, toIndex).trim();
-            ///  Date should be in the format of YYYY-MM-DD, thus the first 10 chars refer date.
-            ///  The rest of the substring should refer to the time (if present).
-            this.fromDate = LocalDate.parse(fromDateTime.substring(0, 10));
-            this.fromTime = Event.getTime(fromDateTime.substring(10).trim());
-            String toDateTime = message.substring(toIndex + 4).trim();
-            this.toDate = LocalDate.parse(toDateTime.substring(0, 10));
-            this.toTime = Event.getTime(toDateTime.substring(10).trim());
-            if (Event.isToBeforeFrom(fromDate, fromTime, toDate, toTime)) {
-                throw new HelperBotArgumentException("From datetime must be before to datetime");
-            }
-        } catch (IndexOutOfBoundsException e) {
-            throw new HelperBotArgumentException("Wrong format for Event");
-        } catch (DateTimeParseException e) {
-            throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /from and /to");
-        }
+        System.out.println(String.join(" ", newMessage));
+        return Event.fromUserInput(String.join(" ", newMessage));
     }
 
     private static Event getEvent(String[] message) throws HelperBotFileException {

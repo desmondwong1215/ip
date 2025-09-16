@@ -40,11 +40,11 @@ public class Task {
     }
 
     /**
-     * Change the description.
-     * @param description The new description.
+     * Gets the description.
+     * @return The description.
      */
-    public void setDescription(String description) {
-        this.description = description;
+    protected String getDescription() {
+        return this.description;
     }
 
     /**
@@ -96,7 +96,7 @@ public class Task {
     }
 
     /**
-     * Update the content of the task.
+     * Updates the content of the task.
      * @param message The new content.
      * @return The updated task.
      * @throws HelperBotArgumentException If the arguments provided are in wrong format
