@@ -77,6 +77,7 @@ public class Response {
      * Prints <code>TaskList</code>.
      * @param isMatched <code>true</code> if HelperBot is matching <code>Task</code>.
      * @param taskList String representation of <code>TaskList</code>.
+     * @return The message.
      */
     public String getTaskListResponse(boolean isMatched, String taskList) {
         if (taskList.isEmpty()) {
@@ -94,7 +95,7 @@ public class Response {
     }
 
     /**
-     * Error occurs when exiting the program.
+     * Prints error message if error occurs when exiting the program.
      * @param message Error message.
      * @return The message.
      */
@@ -103,7 +104,7 @@ public class Response {
     }
 
     /**
-     * Output the result of update command.
+     * Prints the result of update command.
      * @param index The index of the task.
      * @param task The task updated.
      * @return The result of the command.
@@ -116,8 +117,8 @@ public class Response {
     }
 
     /**
-     * Error occurs when exiting the program.
-     * @param isMatched True if empty task list after matching.
+     * Prints empty task message when no existing task matches the condition.
+     * @param isMatched True if the task list is empty after matching.
      * @return The message.
      */
     private String getEmptyTaskListResponse(boolean isMatched) {
