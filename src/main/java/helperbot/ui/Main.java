@@ -17,11 +17,13 @@ import javafx.stage.WindowEvent;
  */
 public class Main extends Application {
 
-    private final HelperBot helperBot = new HelperBot("src/main/java/helperbot/storage/data/HelperBot.txt");
+    private HelperBot helperBot;
 
     @Override
     public void start(Stage stage) {
         try {
+            HelperBot.createFileIfNotExist();
+            this.helperBot = new HelperBot("data/HelperBot.txt");
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);

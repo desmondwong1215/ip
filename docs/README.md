@@ -77,7 +77,7 @@ To add an `Event`:
 ```
 event [task name] \from [date] [time] \to [date] [time]
 ```
-Noted that date should be in the format of `YYYY-MM-DD` and time (which is optional) should be in the format of `hh: mm`.
+Noted that date should be in the format of `YYYY-MM-DD` and time (which is optional) should be in the format of `hh:mm`.
 
 <br>
 
@@ -113,7 +113,7 @@ list
 
 <br>
 
-### 6. Mark a Task as Done/ Not Done
+### 6. Mark a `Task` as Done/ Not Done
 Mark / Unmark a `Task` with its index; you can check its index using the `list` command.
 ```
 mark [index]
@@ -125,7 +125,7 @@ unmark [index]
 
 <br>
 
-### 7. Update Task
+### 7. Update `Task`
 To update a task, an user need the index and the type of the task. 
 * Update description only.
     ```
@@ -158,7 +158,9 @@ User can close the program by tapping the close button on the top right or enter
 bye
 ```
 
-### Troubleshooting
+<br>
+
+## Troubleshooting
 If the user enters an invalid command, the HelperBot will output relevant error message to help user 
 identify the problem.
 
