@@ -9,8 +9,9 @@ HelperBot frees your mind from having to remember things you need to do. It's,
 * easy to learn
 * ~~FAST~~ SUPER FAST to use
 
-<br>
+![HelperBot's Demo](./Ui.png)
 
+<br>
 
 Have a view of <b>HelperBot<b> from [here](https://github.com/desmondwong1215/ip).
 
