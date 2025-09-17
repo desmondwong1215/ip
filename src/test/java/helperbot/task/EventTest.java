@@ -117,7 +117,7 @@ class EventTest {
     }
 
     @Test
-    void toSaveFormat_eventWithTime_correctFormat() {
+    void toSaveFormat_eventWithTime_correctFormat() throws HelperBotArgumentException {
         Event event = new Event("go to the gym", LocalDate.of(2025, 11, 10),
                 LocalTime.of(17, 30),
                 LocalDate.of(2025, 11, 10), LocalTime.of(19, 0));
@@ -125,7 +125,7 @@ class EventTest {
     }
 
     @Test
-    void toSaveFormat_eventWithoutTime_correctFormat() {
+    void toSaveFormat_eventWithoutTime_correctFormat() throws HelperBotArgumentException {
         Event event = new Event("take a trip", LocalDate.of(2025, 12, 20),
                     null,
                 LocalDate.of(2025, 12, 25), null);

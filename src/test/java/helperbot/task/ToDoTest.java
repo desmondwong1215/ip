@@ -62,7 +62,7 @@ class ToDoTest {
     }
 
     @Test
-    void toSaveFormat_validTask_correctFormat() {
+    void toSaveFormat_validTask_correctFormat() throws HelperBotArgumentException {
         ToDo toDo = new ToDo("take out the trash");
         assertEquals("T,0,take out the trash", toDo.toSavaFormat());
     }

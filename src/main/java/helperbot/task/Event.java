@@ -26,7 +26,8 @@ public class Event extends Task {
      * @param toDate The end date of the event.
      * @param toTime The end time of the event.
      */
-    public Event(String description, LocalDate fromDate, LocalTime fromTime, LocalDate toDate, LocalTime toTime) {
+    public Event(String description, LocalDate fromDate, LocalTime fromTime, LocalDate toDate,
+                 LocalTime toTime) throws HelperBotArgumentException {
         super(description);
         this.fromDate = fromDate;
         this.fromTime = fromTime;
@@ -67,7 +68,8 @@ public class Event extends Task {
         } catch (IndexOutOfBoundsException e) {
             throw new HelperBotArgumentException("Wrong format for Event");
         } catch (DateTimeParseException e) {
-            throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /from and /to");
+            throw new HelperBotArgumentException("Invalid date or time. "
+                    + "Please enter date and time in YYYY-MM-DD hh:mm after /from and /to");
         }
     }
 
@@ -165,13 +167,17 @@ public class Event extends Task {
         if (Event.isToBeforeFrom(fromDate, fromTime, toDate, toTime)) {
             throw new HelperBotFileException("From datetime must be before to datetime");
         }
-        Event event = new Event(message[2], fromDate, fromTime, toDate, toTime);
-        if (message[1].equals("1")) {
-            event.markAsDone();
-        } else if (!message[1].equals("0")) {
-            throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
+        try {
+            Event event = new Event(message[2], fromDate, fromTime, toDate, toTime);
+            if (message[1].equals("1")) {
+                event.markAsDone();
+            } else if (!message[1].equals("0")) {
+                throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
+            }
+            return event;
+        } catch (HelperBotArgumentException e) {
+            throw new HelperBotFileException("Empty description.");
         }
-        return event;
     }
 
     private static boolean isToBeforeFrom(LocalDate fromDate, LocalTime fromTime,

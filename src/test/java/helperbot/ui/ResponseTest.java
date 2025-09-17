@@ -32,7 +32,7 @@ class ResponseTest {
     }
 
     @Test
-    void getMarkCommandResponse_validTask_correctOutput() {
+    void getMarkCommandResponse_validTask_correctOutput() throws HelperBotArgumentException {
         Task mockTask = new Task("test task") {
             @Override
             public String toString() {
@@ -46,7 +46,7 @@ class ResponseTest {
     }
 
     @Test
-    void getUnmarkCommandResponse_validTask_correctOutput() {
+    void getUnmarkCommandResponse_validTask_correctOutput() throws HelperBotArgumentException {
         Task mockTask = new Task("another test task") {
             @Override
             public String toString() {

@@ -80,13 +80,13 @@ class DeadlineTest {
     }
 
     @Test
-    void toSaveFormat_withoutByTime_success() {
+    void toSaveFormat_withoutByTime_success() throws HelperBotArgumentException {
         Deadline deadline = new Deadline("deadline1", LocalDate.parse("2025-09-12"), null);
         assertEquals("D,0,deadline1,2025-09-12,", deadline.toSavaFormat());
     }
 
     @Test
-    void toSaveFormat_havaByTime_success() {
+    void toSaveFormat_havaByTime_success() throws HelperBotArgumentException {
         Deadline deadline = new Deadline("deadline1", LocalDate.parse("2025-09-12"),
                 LocalTime.parse("21:30"));
         assertEquals("D,0,deadline1,2025-09-12,21:30", deadline.toSavaFormat());

@@ -16,7 +16,10 @@ public class Task {
      * Generates a <code>Task</code>.
      * @param description The description of the task.
      */
-    public Task(String description) {
+    public Task(String description) throws HelperBotArgumentException {
+        if (description.isEmpty()) {
+            throw new HelperBotArgumentException("Empty description.");
+        }
         this.description = description;
         this.isDone = false;
     }

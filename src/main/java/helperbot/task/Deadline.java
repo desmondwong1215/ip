@@ -22,7 +22,7 @@ public class Deadline extends Task {
      * @param byDate the date of the deadline
      * @param byTime the time of the deadline
      */
-    public Deadline(String description, LocalDate byDate, LocalTime byTime) {
+    public Deadline(String description, LocalDate byDate, LocalTime byTime) throws HelperBotArgumentException {
         super(description);
         this.byDate = byDate;
         this.byTime = byTime;
@@ -51,7 +51,8 @@ public class Deadline extends Task {
         } catch (IndexOutOfBoundsException e) {
             throw new HelperBotArgumentException("Wrong format for Deadline");
         } catch (DateTimeParseException e) {
-            throw new HelperBotArgumentException("Please enter date and time in YYYY-MM-DD hh:mm after /by");
+            throw new HelperBotArgumentException("Invalid date or time. "
+                    + "Please enter date and time in YYYY-MM-DD hh:mm after /by");
         }
     }
 
@@ -128,12 +129,16 @@ public class Deadline extends Task {
         if (message.length == 5) {
             byTime = LocalTime.parse(message[4]);
         }
-        Deadline deadline = new Deadline(message[2], byDate, byTime);
-        if (message[1].equals("1")) {
-            deadline.markAsDone();
-        } else if (!message[1].equals("0")) {
-            throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
+        try {
+            Deadline deadline = new Deadline(message[2], byDate, byTime);
+            if (message[1].equals("1")) {
+                deadline.markAsDone();
+            } else if (!message[1].equals("0")) {
+                throw new HelperBotFileException("Invalid status " + message[0] + " for Task");
+            }
+            return deadline;
+        } catch (HelperBotArgumentException e) {
+            throw new HelperBotFileException("Empty description.");
         }
-        return deadline;
     }
 }

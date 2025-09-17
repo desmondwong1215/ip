@@ -12,7 +12,7 @@ public class ToDo extends Task {
      * Generates a <code>ToDo</code>
      * @param description the name of the task.
      */
-    public ToDo(String description) {
+    public ToDo(String description) throws HelperBotArgumentException {
         super(description);
     }
 
@@ -25,9 +25,6 @@ public class ToDo extends Task {
     public static ToDo fromUserInput(String message) throws HelperBotArgumentException {
         try {
             String detail = message.substring(5).trim();
-            if (detail.isEmpty()) {
-                throw new HelperBotArgumentException("Empty description.");
-            }
             return new ToDo(detail);
         } catch (IndexOutOfBoundsException e) {
             throw new HelperBotArgumentException("Wrong format for ToDo.");
@@ -51,6 +48,8 @@ public class ToDo extends Task {
             return toDo;
         } catch (IndexOutOfBoundsException e) {
             throw new HelperBotFileException("Incomplete data for Task.");
+        } catch (HelperBotArgumentException e) {
+            throw new HelperBotFileException("Empty description.");
         }
     }
 
