@@ -13,10 +13,10 @@ import helperbot.exception.HelperBotFileException;
  */
 public class Event extends Task {
 
-    private LocalDate fromDate;
-    private LocalTime fromTime;
-    private LocalDate toDate;
-    private LocalTime toTime;
+    private final LocalDate fromDate;
+    private final LocalTime fromTime;
+    private final LocalDate toDate;
+    private final LocalTime toTime;
 
     /**
      * Generate a <code>Event</code>
@@ -122,7 +122,7 @@ public class Event extends Task {
     }
 
     @Override
-    public Task update(String message) throws HelperBotArgumentException {
+    public Event update(String message) throws HelperBotArgumentException {
         String[] newMessage = new String[]{"event", this.getDescription(), "/from",
                 this.fromDate.toString() + " " + (this.fromTime == null ? "" : this.fromTime.toString()), "/to",
                 this.toDate.toString() + " " + (this.toTime == null ? "" : this.toTime.toString())};

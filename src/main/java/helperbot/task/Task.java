@@ -9,7 +9,7 @@ import helperbot.exception.HelperBotFileException;
  * Represents a task in <b>HelperBot</b>.
  */
 public class Task {
-    private String description;
+    private final String description;
     private boolean isDone;
 
     /**

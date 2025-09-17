@@ -14,14 +14,14 @@ import helperbot.exception.HelperBotFileException;
 class ToDoTest {
 
     @Test
-    void fromInput_validInput_success() throws HelperBotArgumentException {
+    void fromUserInput_validInput_success() throws HelperBotArgumentException {
         String input = "todo read a book";
         ToDo toDo = ToDo.fromUserInput(input);
         assertEquals("[T][ ] read a book", toDo.toString());
     }
 
     @Test
-    void fromInput_emptyDescription_exceptionThrown() {
+    void fromUserInput_emptyDescription_exceptionThrown() {
         String input = "todo   ";
         HelperBotArgumentException thrown = assertThrows(HelperBotArgumentException.class, () -> {
             ToDo.fromUserInput(input);
@@ -62,8 +62,15 @@ class ToDoTest {
     }
 
     @Test
-    void toStrInFile_validTask_correctFormat() {
+    void toSaveFormat_validTask_correctFormat() {
         ToDo toDo = new ToDo("take out the trash");
         assertEquals("T,0,take out the trash", toDo.toSavaFormat());
+    }
+
+    @Test
+    void update_updateDescription_success() throws HelperBotArgumentException {
+        ToDo todo = new ToDo("todo1");
+        String input = "new todo";
+        assertEquals("[T][ ] new todo", todo.update(input).toString());
     }
 }

@@ -17,6 +17,8 @@ public class CommandTest {
         assertFalse(new DeleteCommand(new String[]{"delete"}).isExit());
         assertFalse(new ListCommand().isExit());
         assertFalse(new MarkCommand(new String[]{"mark"}, false).isExit());
+        assertFalse(new FindCommand("find").isExit());
+        assertFalse(new UpdateCommand(new String[]{"update"}).isExit());
     }
 
     @Test

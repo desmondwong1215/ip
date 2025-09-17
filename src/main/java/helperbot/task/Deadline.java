@@ -13,8 +13,8 @@ import helperbot.exception.HelperBotFileException;
  */
 public class Deadline extends Task {
 
-    private LocalDate byDate;
-    private LocalTime byTime;
+    private final LocalDate byDate;
+    private final LocalTime byTime;
 
     /**
      * Generates a <code>Deadline</code>
@@ -102,7 +102,8 @@ public class Deadline extends Task {
     }
 
     @Override
-    public Task update(String message) throws HelperBotArgumentException {
+    public Deadline update(String message) throws HelperBotArgumentException {
+        System.out.println(message + "hello");
         StringBuilder newMessage = new StringBuilder("deadline ");
         int byIndex = message.indexOf("/by ");
         if (byIndex == -1) {
@@ -110,7 +111,7 @@ public class Deadline extends Task {
                     .append(" /by ")
                     .append(this.byDate.toString())
                     .append(" ")
-                    .append(this.byTime);
+                    .append(this.byTime == null ? "" : this.byTime.toString());
         } else if (byIndex == 0) {
             newMessage.append(this.getDescription())
                     .append(" ")
@@ -118,7 +119,6 @@ public class Deadline extends Task {
         } else {
             newMessage.append(message);
         }
-        System.out.println(newMessage);
         return Deadline.fromUserInput(newMessage.toString());
     }
 
