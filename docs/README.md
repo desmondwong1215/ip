@@ -32,6 +32,7 @@ Have a view of <b>HelperBot<b> from [here](https://github.com/desmondwong1215/ip
 
 ### Installation
 
+Option 1:
 1. **Clone the repository**
 ```bash
 git clone https://github.com/desmondwong1215/ip.git
@@ -42,10 +43,20 @@ cd ip
     - Download JavaFX SDK from [OpenJFX website](https://openjfx.io/)
     - Add JavaFX to your module path
 
-### Running Application
+1. **Run Application**
 ```
 ./gradlew run
 ```
+
+Option 2:
+
+1. **Download JAR File**
+    - Download [helperBot.jar](https://github.com/desmondwong1215/ip/releases)
+    - Save it to an empty folder of your choice.
+
+2. **Run Application**
+    - Open your terminal, change directory to the location of the folder that save the `helperBot.jar`.
+    - run `java -jar helperBot.jar` and voilà.
 
 <br>
 
