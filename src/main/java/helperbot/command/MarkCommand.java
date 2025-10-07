@@ -50,7 +50,8 @@ public class MarkCommand extends Command {
                 return response.getErrorMessage("Invalid Argument: Please enter the index of the HelperBot task after "
                         + this.splitMessages[0] + ".");
             } else {
-                return response.getErrorMessage("Invalid Argument: Task " + (indices[ptr] + 1) + " is not found.");
+                return response.getErrorMessage("Invalid Argument: Task(s) in " + Arrays.toString(intStrs) + " is/are"
+                        + "not found.");
             }
         } catch (NumberFormatException e) {
             return response.getErrorMessage("Invalid Argument: " + this.splitMessages[1]
